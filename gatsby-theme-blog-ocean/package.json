@@ -1,0 +1,13 @@
+{
+  "name": "gatsby-theme-blog-ocean",
+  "version": "1.0.0",
+  "description": "A blog theme for Gatsby.",
+  "main": "index.js",
+  "repository": "https://github.com/HowyoungZhou/gatsby-theme-blog-ocean.git",
+  "author": "Howyoung <howyoung3@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "peerDependencies": {
+    "gatsby": "^4.0.0-zz-next.2"
+  }
+}

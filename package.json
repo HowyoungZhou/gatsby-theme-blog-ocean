@@ -1,0 +1,17 @@
+{
+  "name": "gatsby-theme-blog-ocean-workspace",
+  "version": "1.0.0",
+  "description": "The workspace for the Gatsby theme blog ocean.",
+  "main": "index.js",
+  "repository": "https://github.com/HowyoungZhou/gatsby-theme-blog-ocean.git",
+  "author": "Howyoung <howyoung3@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "gatsby-theme-blog-ocean",
+    "example"
+  ],
+  "scripts": {
+    "develop": "yarn workspace example develop"
+  }
+}
