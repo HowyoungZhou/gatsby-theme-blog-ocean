@@ -13,10 +13,15 @@
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "^5.2.4",
     "@mui/material": "^5.2.4",
+    "gatsby-plugin-react-i18next": "^1.2.2",
     "gatsby-plugin-typescript": "^4.4.0",
+    "gatsby-source-filesystem": "^4.4.0",
     "gatsby-theme-material-ui": "^5.1.0",
+    "i18next": "^21.6.3",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-i18next": "^11.15.1"
   }
 }
