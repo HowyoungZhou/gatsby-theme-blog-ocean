@@ -1,3 +1,4 @@
+import { SvgIconComponent } from '@mui/icons-material';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import BrightnessAutoIcon from '@mui/icons-material/BrightnessAuto';
 import BrightnessHighIcon from '@mui/icons-material/BrightnessHigh';
@@ -21,18 +22,18 @@ import React from 'react';
 import useI18n from '../utils/use-i18n';
 import { ThemeMode, useMode } from './theme-context';
 
-const modeMap: Record<ThemeMode, { name: string; icon: React.ReactNode }> = {
+const modeMap: Record<ThemeMode, { name: string; icon: SvgIconComponent }> = {
   light: {
     name: 'Light',
-    icon: <BrightnessHighIcon fontSize="small" />,
+    icon: BrightnessHighIcon,
   },
   dark: {
     name: 'Dark',
-    icon: <Brightness4Icon fontSize="small" />,
+    icon: Brightness4Icon,
   },
   auto: {
     name: 'System Default',
-    icon: <BrightnessAutoIcon fontSize="small" />,
+    icon: BrightnessAutoIcon,
   }
 };
 
@@ -47,6 +48,7 @@ function ThemeIconButton() {
   const { t } = useTranslation();
 
   const currentMode = modeMap[mode];
+  const Icon = currentMode.icon;
 
   const toggleMode = () => {
     const nextModes: Record<ThemeMode, ThemeMode> = { light: 'dark', dark: 'auto', auto: 'light' };
@@ -59,7 +61,7 @@ function ThemeIconButton() {
       color="inherit"
       onClick={toggleMode}
     >
-      {currentMode.icon}
+      <Icon fontSize='small' />
     </IconButton>
   </ToolTip >
 }
