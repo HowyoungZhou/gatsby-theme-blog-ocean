@@ -99,7 +99,7 @@ export default function Index({ data }: { data: SiteMetadata }) {
 }
 
 export const query = graphql`
-  {
+  query IndexPageQuery($language: String!) {
     site {
       siteMetadata {
         description
@@ -108,6 +108,15 @@ export const query = graphql`
         social {
           name
           url
+        }
+      }
+    }
+    locales: allLocale(filter: {language: {eq: $language}}) {
+      edges {
+        node {
+          ns
+          data
+          language
         }
       }
     }
