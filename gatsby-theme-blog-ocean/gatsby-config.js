@@ -1,20 +1,21 @@
-module.exports = (options) => {
+module.exports = ({postsPathTemplate, languages, defaultLanguage, i18nOptions}) => {
   return {
     plugins: [
       `gatsby-theme-material-ui`,
+      `gatsby-plugin-mdx`,
       {
         resolve: `gatsby-source-filesystem`,
         options: {
-          path: `${__dirname}/locales`,
-          name: `locale`
+          path: `locales`,
+          name: `locales`
         }
       },
       {
         resolve: `gatsby-plugin-react-i18next`,
         options: {
-          localeJsonSourceName: `locale`, // name given to `gatsby-source-filesystem` plugin.
-          languages: [`en`, `zh`, `jp`],
-          defaultLanguage: 'en',
+          localeJsonSourceName: `locales`, // name given to `gatsby-source-filesystem` plugin.
+          languages,
+          defaultLanguage,
           // if you are using Helmet, you must include siteUrl, and make sure you add http:https
           // siteUrl: config.siteUrl,
           // you can pass any i18next options
@@ -28,14 +29,15 @@ module.exports = (options) => {
           },
           pages: [
             {
-              matchPath: '/:lang?/posts/:uid',
+              matchPath: postsPathTemplate,
               getLanguageFromPath: true
             },
             {
               matchPath: '/:lang?/about-me',
               getLanguageFromPath: true
             }
-          ]
+          ],
+          ...i18nOptions
         }
       }
     ]
