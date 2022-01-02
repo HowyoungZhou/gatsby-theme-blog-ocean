@@ -1,21 +1,12 @@
-import { SvgIconComponent } from "@mui/icons-material";
-import EmailIcon from '@mui/icons-material/Email';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import TelegramIcon from '@mui/icons-material/Telegram';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
-import ToolTip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import { graphql } from 'gatsby';
 import { Trans } from 'gatsby-plugin-react-i18next';
-import { IconButton } from 'gatsby-theme-material-ui';
 import * as React from 'react';
 import { HeaderToolbar } from '../components/header';
-import useI18n from '../utils/use-i18n';
+import SocialIcons from "../components/social-icons";
 
 const StyledAppBar = styled(AppBar)(() => ({
   color: '#fff',
@@ -27,7 +18,7 @@ const StyledAppBar = styled(AppBar)(() => ({
   backgroundSize: 'cover'
 }));
 
-interface SiteMetadata {
+interface Data {
   site: {
     siteMetadata: {
       title: string;
@@ -41,16 +32,7 @@ interface SiteMetadata {
   }
 };
 
-const socialIconMap: Record<string, SvgIconComponent> = {
-  'GitHub': GitHubIcon,
-  'Email': EmailIcon,
-  'Twitter': TwitterIcon,
-  'WhatsApp': WhatsAppIcon,
-  'Telegram': TelegramIcon
-};
-
-export default function Index({ data }: { data: SiteMetadata }) {
-  const { getLink } = useI18n();
+export default function Index({ data }: { data: Data }) {
 
   return (
     <StyledAppBar position="static">
@@ -62,36 +44,7 @@ export default function Index({ data }: { data: SiteMetadata }) {
         <Typography variant="h5">
           <Trans>I'm a tech enthusiast learning computer science currently.</Trans>
         </Typography>
-        {
-          data.site.siteMetadata.social.map(
-            ({ name, url }, i) => {
-              const Icon = socialIconMap[name];
-              return (
-                <ToolTip title={name}>
-                  <IconButton
-                    size="large"
-                    color="inherit"
-                    to={url}
-                    edge={i == 0 ? "start" : false}
-                    aria-label={name}
-                  >
-                    <Icon fontSize="small" />
-                  </IconButton>
-                </ToolTip>
-              );
-            }
-          )
-        }
-        <ToolTip title="About Me">
-          <IconButton
-            size="large"
-            color="inherit"
-            to={getLink("/about-me")}
-            aria-label="about me"
-          >
-            <MoreHorizIcon fontSize="small" />
-          </IconButton>
-        </ToolTip>
+        <SocialIcons social={data.site.siteMetadata.social} />
       </Box>
 
     </StyledAppBar>

@@ -1,4 +1,11 @@
-module.exports = ({postsPathTemplate, languages, defaultLanguage, i18nOptions}) => {
+module.exports = (options) => {
+  const {
+    postsPathTemplate = '/:lang?/posts/:segment+',
+    languages = ['en'],
+    defaultLanguage = 'en',
+    i18nOptions
+  } = options;
+
   return {
     plugins: [
       `gatsby-theme-material-ui`,
