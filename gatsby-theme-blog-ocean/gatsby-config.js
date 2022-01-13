@@ -9,6 +9,9 @@ module.exports = (options) => {
   return {
     plugins: [
       `gatsby-theme-material-ui`,
+      `gatsby-plugin-image`,
+      `gatsby-plugin-sharp`,
+      `gatsby-transformer-sharp`,
       `gatsby-plugin-mdx`,
       {
         resolve: `gatsby-source-filesystem`,
