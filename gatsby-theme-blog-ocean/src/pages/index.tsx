@@ -9,7 +9,7 @@ import { HeaderToolbar } from '../components/header';
 import SocialIcons from "../components/social-icons";
 import Masonry from '@mui/lab/Masonry';
 import Card from "../components/card";
-import { IGatsbyImageData } from 'gatsby-plugin-image';
+import { Post } from '../model/post';
 
 const StyledAppBar = styled(AppBar)(() => ({
   color: '#fff',
@@ -20,21 +20,6 @@ const StyledAppBar = styled(AppBar)(() => ({
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover'
 }));
-
-interface Post {
-  id: string;
-  title: string;
-  excerpt: string;
-  slug: string;
-  date: string;
-  image?: {
-    childImageSharp: {
-      gatsbyImageData: IGatsbyImageData;
-    }
-  };
-  imageAlt?: string;
-  tags?: string[];
-}
 
 interface Data {
   site: {
