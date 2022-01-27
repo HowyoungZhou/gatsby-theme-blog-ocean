@@ -79,6 +79,7 @@ function PostsList({ posts }: { posts: Post[] }) {
             <Card
               link={post.slug}
               title={post.title}
+              subtitle={post.date}
               image={
                 post.image && {
                   // caption: post.imageCaptionText,

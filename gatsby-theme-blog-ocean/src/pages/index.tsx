@@ -13,7 +13,7 @@ import { Post } from '../model/post';
 
 const StyledAppBar = styled(AppBar)(() => ({
   color: '#fff',
-  minHeight: '40vh',
+  minHeight: '50vh',
   display: 'flex',
   justifyContent: 'space-between',
   backgroundImage: `linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.8) 100%)`,
@@ -44,7 +44,7 @@ export default function Index({ data }: { data: Data }) {
     <>
       <StyledAppBar position="static">
         <HeaderToolbar />
-        <Box sx={{ marginInline: 4, marginBlock: 2 }}>
+        <Box sx={{ mx: 4, my: 2 }}>
           <Typography variant="h3">
             <Trans>Hi! I'm {data.site.siteMetadata.author}.</Trans>
           </Typography>
