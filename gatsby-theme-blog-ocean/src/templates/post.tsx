@@ -90,7 +90,7 @@ function TocTreeView({ toc, sx, onClick }: { toc: TocNode, sx?: SxProps<Theme>, 
   useOnScroll(updateActive);
 
   return (
-    <Stack sx={sx}>
+    <Stack sx={sx} component="nav">
       {
         tocItems.map(
           item => (
@@ -114,9 +114,9 @@ function TocTreeView({ toc, sx, onClick }: { toc: TocNode, sx?: SxProps<Theme>, 
 export default function Post({ data }) {
   const theme = useTheme();
   const post = data.blogPost;
-  const onPhone = useMediaQuery(theme.breakpoints.down('sm'));
+  const mobileMode = useMediaQuery(theme.breakpoints.down('sm'));
   const [open, setOpen] = React.useState(false);
-  React.useEffect(() => { setOpen(!onPhone) }, [onPhone])
+  React.useEffect(() => { setOpen(!mobileMode) }, [mobileMode])
 
   return (
     <>
@@ -130,7 +130,7 @@ export default function Post({ data }) {
             boxSizing: 'border-box',
           },
         }}
-        variant={onPhone ? "temporary" : "persistent"}
+        variant={mobileMode ? "temporary" : "persistent"}
         anchor="left"
         open={open}
         onClose={() => setOpen(false)}
@@ -149,10 +149,10 @@ export default function Post({ data }) {
         <TocTreeView
           toc={data.blogPost.tableOfContents}
           sx={{ mx: 1, my: 2 }}
-          onClick={() => onPhone && setOpen(false)}
+          onClick={() => mobileMode && setOpen(false)}
         />
       </Drawer>
-      <Main open={!onPhone && open}>
+      <Main open={!mobileMode && open}>
         <AppBar
           title={post.title}
           leading={!open && (
