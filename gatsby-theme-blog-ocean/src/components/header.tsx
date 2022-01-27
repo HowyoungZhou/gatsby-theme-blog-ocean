@@ -113,9 +113,9 @@ function ButtonGroup() {
   const { getLink } = useI18n();
 
   return (
-    <>
+    <Box sx={{display:'flex', flexWrap:'nowrap'}}>
       <Button
-        sx={{ marginRight: 1 }}
+        sx={{ mr: 1 }}
         color="inherit"
         startIcon={<HomeIcon />}
         to={getLink("/")}
@@ -123,7 +123,7 @@ function ButtonGroup() {
         <Trans>Home</Trans>
       </Button>
       <Button
-        sx={{ marginRight: 1 }}
+        sx={{ mr: 1 }}
         color="inherit"
         startIcon={<LibraryBooksIcon />}
         to={getLink("/posts")}
@@ -143,7 +143,7 @@ function ButtonGroup() {
         </IconButton>
       </ToolTip>
 
-    </>
+    </Box>
   );
 }
 
@@ -152,7 +152,7 @@ function MobileButtonGroup() {
   const { getLink } = useI18n();
 
   return (
-    <>
+    <Box sx={{display:'flex', flexWrap:'nowrap'}}>
       <ToolTip title={t("Home")}>
         <IconButton
           aria-label="home"
@@ -174,7 +174,7 @@ function MobileButtonGroup() {
         </IconButton>
       </ToolTip>
       <MobileMenu />
-    </>
+    </Box>
   );
 }
 
@@ -248,7 +248,7 @@ export function HeaderToolbar({ leading, title }: HeaderToolbarProps) {
   return (
     <Toolbar>
       {leading || null}
-      <Typography variant="h6" sx={{ flexGrow: 1 }}>
+      <Typography variant="h6" sx={{ flexGrow: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
         {title}
       </Typography>
       <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
