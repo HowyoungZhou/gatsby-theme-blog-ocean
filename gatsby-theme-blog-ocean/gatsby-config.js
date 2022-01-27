@@ -8,11 +8,21 @@ module.exports = (options) => {
 
   return {
     plugins: [
+      `gatsby-plugin-react-helmet`,
       `gatsby-theme-material-ui`,
       `gatsby-plugin-image`,
       `gatsby-plugin-sharp`,
       `gatsby-transformer-sharp`,
-      `gatsby-plugin-mdx`,
+      {
+        resolve: `gatsby-plugin-mdx`,
+        options: {
+          extensions: [".md", ".mdx"],
+          remarkPlugins: [
+            // We will migrate to rehype-slug when Gatsby supports ESM
+            require(`remark-slug`)
+          ],
+        },
+      },
       {
         resolve: `gatsby-source-filesystem`,
         options: {
