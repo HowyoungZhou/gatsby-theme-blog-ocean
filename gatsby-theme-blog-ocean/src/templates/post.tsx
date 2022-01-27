@@ -61,20 +61,32 @@ function* traverseToc(root: TocNode) {
   let cur: TocItem;
   while (cur = stack.pop()) {
     yield cur;
-    if (cur.items) stack.push(...cur.items.map(v => ({ depth: cur.depth + 1, ...v })));
+    if (cur.items) stack.push(...cur.items.map(v => ({ depth: cur.depth + 1, ...v })).reverse());
   }
 }
 
 function TocTreeView({ toc, selected, sx }: { toc: TocNode, selected?: TocNode, sx?: SxProps<Theme> }) {
+  const tocItems = Array.from(traverseToc(toc)).slice(1);
+  const [activeItem, setActiveItem] = React.useState<string>();
+
+  React.useEffect(
+    () => {
+      window.addEventListener('scroll', () => {
+        const url = tocItems.find(item => document.querySelector(item.url).getBoundingClientRect().top > 0).url;
+        setActiveItem(url);
+      });
+    }
+  );
+
   return (
     <Stack sx={sx}>
       {
-        Array.from(traverseToc(toc)).slice(1).map(
+        tocItems.map(
           item => (
             <Link
               key={item.url}
               to={item.url}
-              color={item.url === selected?.url ? "text.primary" : "text.secondary"}
+              color={item.url === activeItem ? "primary" : "text.secondary"}
               underline="hover"
               sx={{ pl: item.depth }}
             >
@@ -111,7 +123,7 @@ export default function Post({ data }) {
         open={open}
       >
         <DrawerHeader>
-          <Typography sx={{ flexGrow: 1, ml: 1 }} variant="subtitle1" color="text.secondary">
+          <Typography sx={{ flexGrow: 1, ml: 1 }} variant="subtitle1">
             <Trans>Contents</Trans>
           </Typography>
           <IconButton onClick={() => setOpen(false)}>
