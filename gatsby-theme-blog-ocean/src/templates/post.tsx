@@ -65,18 +65,29 @@ function* traverseToc(root: TocNode) {
   }
 }
 
-function TocTreeView({ toc, selected, sx }: { toc: TocNode, selected?: TocNode, sx?: SxProps<Theme> }) {
-  const tocItems = Array.from(traverseToc(toc)).slice(1);
+function useOnScroll(callback: () => void) {
+  React.useEffect(() => {
+    callback();
+    window.addEventListener('scroll', callback);
+    return () => {
+      window.removeEventListener('scroll', callback);
+    };
+  }, [callback]);
+}
+
+function TocTreeView({ toc, sx, onClick }: { toc: TocNode, sx?: SxProps<Theme>, onClick?: React.MouseEventHandler }) {
+  const tocItems = React.useMemo(() => Array.from(traverseToc(toc)).slice(1), [toc]);
   const [activeItem, setActiveItem] = React.useState<string>();
 
-  React.useEffect(
+  const updateActive = React.useCallback(
     () => {
-      window.addEventListener('scroll', () => {
-        const url = tocItems.find(item => document.querySelector(item.url).getBoundingClientRect().top > 0).url;
-        setActiveItem(url);
-      });
-    }
+      const url = tocItems.find(item => document?.querySelector(item.url)?.getBoundingClientRect().top > 0).url;
+      setActiveItem(url);
+    },
+    [activeItem, tocItems]
   );
+
+  useOnScroll(updateActive);
 
   return (
     <Stack sx={sx}>
@@ -89,6 +100,7 @@ function TocTreeView({ toc, selected, sx }: { toc: TocNode, selected?: TocNode, 
               color={item.url === activeItem ? "primary" : "text.secondary"}
               underline="hover"
               sx={{ pl: item.depth }}
+              onClick={onClick}
             >
               {item.title}
             </Link>
@@ -121,6 +133,7 @@ export default function Post({ data }) {
         variant={onPhone ? "temporary" : "persistent"}
         anchor="left"
         open={open}
+        onClose={() => setOpen(false)}
       >
         <DrawerHeader>
           <Typography sx={{ flexGrow: 1, ml: 1 }} variant="subtitle1">
@@ -130,8 +143,14 @@ export default function Post({ data }) {
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </DrawerHeader>
+
         <Divider />
-        <TocTreeView toc={data.blogPost.tableOfContents} sx={{ mx: 1, my: 2 }} />
+
+        <TocTreeView
+          toc={data.blogPost.tableOfContents}
+          sx={{ mx: 1, my: 2 }}
+          onClick={() => onPhone && setOpen(false)}
+        />
       </Drawer>
       <Main open={!onPhone && open}>
         <AppBar
