@@ -15,6 +15,7 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import { Post } from '../model/post';
+import Seo from '../components/seo';
 
 interface Data {
   allBlogPost: {
@@ -99,6 +100,7 @@ function PostsList({ posts }: { posts: Post[] }) {
 export default function Posts({ data }: { data: Data }) {
   return (
     <>
+      <Seo title="Posts" />
       <AppBar title="Posts" />
 
       <Container sx={{ display: { xs: 'none', sm: 'block' } }}>

@@ -10,6 +10,7 @@ import SocialIcons from "../components/social-icons";
 import Masonry from '@mui/lab/Masonry';
 import Card from "../components/card";
 import { Post } from '../model/post';
+import Seo from '../components/seo';
 
 const StyledAppBar = styled(AppBar)(() => ({
   color: '#fff',
@@ -42,6 +43,7 @@ export default function Index({ data }: { data: Data }) {
 
   return (
     <>
+      <Seo title="Home" />
       <StyledAppBar position="static">
         <HeaderToolbar />
         <Box sx={{ mx: 4, my: 2 }}>
@@ -49,7 +51,7 @@ export default function Index({ data }: { data: Data }) {
             <Trans>Hi! I'm {data.site.siteMetadata.author}.</Trans>
           </Typography>
           <Typography variant="h5">
-            <Trans>I'm a tech enthusiast learning computer science currently.</Trans>
+            <Trans>{data.site.siteMetadata.description}</Trans>
           </Typography>
           <SocialIcons social={data.site.siteMetadata.social} />
         </Box>

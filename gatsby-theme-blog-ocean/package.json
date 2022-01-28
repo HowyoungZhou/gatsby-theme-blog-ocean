@@ -17,6 +17,7 @@
     "@mui/icons-material": "^5.2.4",
     "@mui/lab": "^5.0.0-alpha.62",
     "@mui/material": "^5.2.4",
+    "@types/react-helmet": "^6.1.5",
     "gatsby-core-utils": "^3.5.2",
     "gatsby-plugin-image": "^2.4.0",
     "gatsby-plugin-mdx": "^3.4.0",

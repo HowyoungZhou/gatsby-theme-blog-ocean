@@ -3168,6 +3168,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-helmet@npm:^6.1.5":
+  version: 6.1.5
+  resolution: "@types/react-helmet@npm:6.1.5"
+  dependencies:
+    "@types/react": "*"
+  checksum: d059cc084d3b3071cce3421bb1170dd42819cf39b81afe60d4fbd66c5ef9ffeaadf1802df80efd9553258f621678f69ceb5a21d73df0d8539d40ae9a0f995485
+  languageName: node
+  linkType: hard
+
 "@types/react-is@npm:^16.7.1 || ^17.0.0":
   version: 17.0.3
   resolution: "@types/react-is@npm:17.0.3"
@@ -7896,6 +7905,7 @@ __metadata:
     "@mui/icons-material": ^5.2.4
     "@mui/lab": ^5.0.0-alpha.62
     "@mui/material": ^5.2.4
+    "@types/react-helmet": ^6.1.5
     gatsby-core-utils: ^3.5.2
     gatsby-plugin-image: ^2.4.0
     gatsby-plugin-mdx: ^3.4.0

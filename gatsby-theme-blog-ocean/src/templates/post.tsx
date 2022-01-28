@@ -17,6 +17,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import { Trans } from "gatsby-plugin-react-i18next";
 import React from "react";
 import AppBar from "../components/header";
+import Seo from "../components/seo";
 import components from "./components";
 
 interface TocNode {
@@ -120,7 +121,7 @@ export default function Post({ data }) {
 
   return (
     <>
-      {/* <Seo title={post.title} /> */}
+      <Seo title={post.title} description={post.excerpt}/>
       <Drawer
         sx={{
           width: drawerWidth,
