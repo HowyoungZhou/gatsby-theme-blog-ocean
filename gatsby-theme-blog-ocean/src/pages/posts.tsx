@@ -16,6 +16,7 @@ import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import { Post } from '../model/post';
 import Seo from '../components/seo';
+import Footer from '../components/footer';
 
 interface Data {
   allBlogPost: {
@@ -99,18 +100,19 @@ function PostsList({ posts }: { posts: Post[] }) {
 
 export default function Posts({ data }: { data: Data }) {
   return (
-    <>
+    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', }}>
       <Seo title="Posts" />
       <AppBar title="Posts" />
 
-      <Container sx={{ display: { xs: 'none', sm: 'block' } }}>
+      <Container sx={{ display: { xs: 'none', sm: 'block' }, flex: 1 }}>
         <PostsTimeline posts={data.allBlogPost.nodes} />
       </Container>
 
-      <Box sx={{ display: { sm: 'none', xs: 'block' } }}>
+      <Box sx={{ display: { sm: 'none', xs: 'block' }, flex: 1 }}>
         <PostsList posts={data.allBlogPost.nodes} />
       </Box>
-    </>
+      <Footer />
+    </Box>
   );
 }
 

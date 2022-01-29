@@ -16,6 +16,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { Trans } from "gatsby-plugin-react-i18next";
 import React from "react";
+import Footer from "../components/footer";
 import AppBar from "../components/header";
 import Seo from "../components/seo";
 import components from "./components";
@@ -35,6 +36,9 @@ const drawerWidth = '250px';
 const Main = styled('div', {
   shouldForwardProp: (prop) => prop !== 'open',
 })<{ open?: boolean }>(({ theme, open }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  minHeight: '100vh',
   transition: theme.transitions.create(['margin', 'width'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -121,7 +125,7 @@ export default function Post({ data }) {
 
   return (
     <>
-      <Seo title={post.title} description={post.excerpt}/>
+      <Seo title={post.title} description={post.excerpt} />
       <Drawer
         sx={{
           width: drawerWidth,
@@ -169,7 +173,7 @@ export default function Post({ data }) {
             </IconButton>
           )}
         />
-        <main>
+        <Box component="main" sx={{ flex: 1 }}>
           <Container>
             <Box sx={{ my: 3 }}>
               {
@@ -187,10 +191,9 @@ export default function Post({ data }) {
               <MDXRenderer>{post.body}</MDXRenderer>
             </MDXProvider>
           </Container>
-
-        </main>
+        </Box>
+        <Footer />
       </Main>
-      {/* <Footer /> */}
     </>
   );
 }

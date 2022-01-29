@@ -11,6 +11,9 @@ import Masonry from '@mui/lab/Masonry';
 import Card from "../components/card";
 import { Post } from '../model/post';
 import Seo from '../components/seo';
+import Footer from '../components/footer';
+
+const cardSpacing = { xs: 1, sm: 2, md: 3 };
 
 const StyledAppBar = styled(AppBar)(() => ({
   color: '#fff',
@@ -42,7 +45,7 @@ interface Data {
 export default function Index({ data }: { data: Data }) {
 
   return (
-    <>
+    <Box sx={{ display: 'flex', minHeight: '100vh', flexDirection: 'column' }}>
       <Seo title="Home" />
       <StyledAppBar position="static">
         <HeaderToolbar />
@@ -57,7 +60,14 @@ export default function Index({ data }: { data: Data }) {
         </Box>
       </StyledAppBar>
 
-      <Masonry columns={{ xs: 1, sm: 2, md: 3 }} spacing={{ xs: 1, sm: 2, md: 3 }} sx={{ paddingLeft: { xs: 1, sm: 2, md: 3 }, paddingTop: { xs: 1, sm: 2, md: 3 } }}>
+      <Masonry
+        columns={{ xs: 1, sm: 2, md: 3 }}
+        spacing={cardSpacing}
+        sx={{
+          pl: cardSpacing,
+          my: { xs: 0.5, sm: 1, md: 2 },
+          flex: 1,
+        }}>
         {
           data.allBlogPost.nodes.map((post) => (
             <Card
@@ -74,7 +84,8 @@ export default function Index({ data }: { data: Data }) {
           ))
         }
       </Masonry>
-    </>
+      <Footer />
+    </Box>
   );
 }
 
