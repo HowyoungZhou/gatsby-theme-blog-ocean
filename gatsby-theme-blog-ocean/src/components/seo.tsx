@@ -1,8 +1,7 @@
-import React from "react"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
-import { useTheme } from "@mui/material"
-import useI18n from "../utils/use-i18n"
+import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
+import { useTheme } from "@mui/material";
+import { Helmet } from "gatsby-plugin-react-i18next";
 
 type MetaProps = JSX.IntrinsicElements["meta"];
 
@@ -13,8 +12,7 @@ export declare interface SeoProps {
   title?: string;
 }
 
-export default function Seo({ description, lang, meta = [], title }: SeoProps) {
-  const { language } = useI18n();
+export default function Seo({ description, meta = [], title }: SeoProps) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -27,10 +25,10 @@ export default function Seo({ description, lang, meta = [], title }: SeoProps) {
         }
       }
     `
-  )
+  );
 
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+  const metaDescription = description || site.siteMetadata.description;
+  const defaultTitle = site.siteMetadata?.title;
 
   const theme = useTheme();
   const defaultMeta: MetaProps[] = [
@@ -74,12 +72,9 @@ export default function Seo({ description, lang, meta = [], title }: SeoProps) {
 
   return (
     <Helmet
-      htmlAttributes={{
-        lang: lang || language,
-      }}
       title={title}
       titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
       meta={defaultMeta.concat(meta)}
     />
-  )
+  );
 }
