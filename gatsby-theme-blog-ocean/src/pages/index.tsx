@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { graphql } from 'gatsby';
-import { Trans } from 'gatsby-plugin-react-i18next';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import * as React from 'react';
 import { HeaderToolbar } from '../components/header';
 import SocialIcons from "../components/social-icons";
@@ -43,18 +43,19 @@ interface Data {
 };
 
 export default function Index({ data }: { data: Data }) {
+  const { t } = useTranslation();
 
   return (
     <Box sx={{ display: 'flex', minHeight: '100vh', flexDirection: 'column' }}>
-      <Seo title="Home" />
+      <Seo title={t("Home")} />
       <StyledAppBar position="static">
         <HeaderToolbar />
         <Box sx={{ mx: 4, my: 2 }}>
           <Typography variant="h3">
-            <Trans>Hi! I'm {data.site.siteMetadata.author}.</Trans>
+            {t('greeting', "Hi! I'm {{ author }}.", { author: data.site.siteMetadata.author })}
           </Typography>
           <Typography variant="h5">
-            <Trans>{data.site.siteMetadata.description}</Trans>
+            {t('description', data.site.siteMetadata.description) /* i18next-extract-disable-line */}
           </Typography>
           <SocialIcons social={data.site.siteMetadata.social} />
         </Box>

@@ -22,32 +22,42 @@ import React from 'react';
 import useI18n from '../utils/use-i18n';
 import { ThemeMode, useMode } from './theme-context';
 
-const modeMap: Record<ThemeMode, { name: string; icon: SvgIconComponent }> = {
-  light: {
-    name: 'Light',
-    icon: BrightnessHighIcon,
-  },
-  dark: {
-    name: 'Dark',
-    icon: Brightness4Icon,
-  },
-  auto: {
-    name: 'System Default',
-    icon: BrightnessAutoIcon,
-  }
-};
+function useModeMap(): Record<ThemeMode, { name: string; icon: SvgIconComponent }> {
+  const { t } = useTranslation();
 
-const languageMap = {
-  'en': 'English',
-  'zh': '中文',
-  'jp': '日本語'
-};
+  return React.useMemo(
+    () => ({
+      light: {
+        name: t('Light'),
+        icon: BrightnessHighIcon,
+      },
+      dark: {
+        name: t('Dark'),
+        icon: Brightness4Icon,
+      },
+      auto: {
+        name: t('System Default'),
+        icon: BrightnessAutoIcon,
+      }
+    }), []
+  );
+}
+
+function languageName(lang: string) {
+  const { language } = useI18n();
+  return React.useMemo(
+    () => {
+      const origName = new Intl.DisplayNames([lang], { type: 'language' }).of(lang);
+      const name = new Intl.DisplayNames([language], { type: 'language' }).of(lang);
+      return origName == name ? origName : `${origName} (${name})`
+    }, [lang, language]
+  );
+}
 
 function ThemeIconButton() {
   const [mode, setMode] = useMode();
-  const { t } = useTranslation();
 
-  const currentMode = modeMap[mode];
+  const currentMode = useModeMap()[mode];
   const Icon = currentMode.icon;
 
   const toggleMode = () => {
@@ -55,7 +65,7 @@ function ThemeIconButton() {
     setMode(nextModes[mode]);
   };
 
-  return <ToolTip title={t(currentMode.name)}>
+  return <ToolTip title={currentMode.name}>
     <IconButton
       aria-label="toggle theme"
       color="inherit"
@@ -98,7 +108,7 @@ function LanguageIconButton() {
                 color="inherit"
                 underline="none"
               >
-                <MenuItem dense >{languageMap[lng]}</MenuItem>
+                <MenuItem dense >{languageName(lng)}</MenuItem>
               </Link>
             )
           )
@@ -113,7 +123,7 @@ function ButtonGroup() {
   const { getLink } = useI18n();
 
   return (
-    <Box sx={{display:'flex', flexWrap:'nowrap'}}>
+    <Box sx={{ display: 'flex', flexWrap: 'nowrap' }}>
       <Button
         sx={{ mr: 1 }}
         color="inherit"
@@ -152,7 +162,7 @@ function MobileButtonGroup() {
   const { getLink } = useI18n();
 
   return (
-    <Box sx={{display:'flex', flexWrap:'nowrap'}}>
+    <Box sx={{ display: 'flex', flexWrap: 'nowrap' }}>
       <ToolTip title={t("Home")}>
         <IconButton
           aria-label="home"
@@ -211,7 +221,7 @@ function MobileMenu() {
             lng => (
               <Link key={lng} to={getLink(originalPath, lng)} color="inherit" underline="none">
                 <MenuItem selected={lng === language}>
-                  {languageMap[lng]}
+                  {languageName(lng)}
                 </MenuItem>
               </Link>
             )
@@ -222,7 +232,7 @@ function MobileMenu() {
           <Trans>Theme</Trans>
         </ListSubheader>
         {
-          Object.entries(modeMap).map(
+          Object.entries(useModeMap()).map(
             ([k, v]) => (
               <MenuItem key={k} selected={k === mode} onClick={() => setMode(k as ThemeMode)}>
                 {v.name}

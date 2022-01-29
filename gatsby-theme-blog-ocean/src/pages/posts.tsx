@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import { graphql } from "gatsby";
 import Card from '../components/card';
 import AppBar from '../components/header';
-import { Trans } from 'gatsby-plugin-react-i18next';
+import { Trans, useTranslation } from 'gatsby-plugin-react-i18next';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
@@ -99,10 +99,12 @@ function PostsList({ posts }: { posts: Post[] }) {
 }
 
 export default function Posts({ data }: { data: Data }) {
+  const { t } = useTranslation();
+
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', }}>
-      <Seo title="Posts" />
-      <AppBar title="Posts" />
+      <Seo title={t("Posts")} />
+      <AppBar title={t("Posts")} />
 
       <Container sx={{ display: { xs: 'none', sm: 'block' }, flex: 1 }}>
         <PostsTimeline posts={data.allBlogPost.nodes} />

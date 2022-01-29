@@ -8,6 +8,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import ToolTip from '@mui/material/Tooltip';
 import { IconButton } from 'gatsby-theme-material-ui';
 import * as React from 'react';
+import { useTranslation } from "react-i18next";
 import useI18n from '../utils/use-i18n';
 
 interface Social {
@@ -25,6 +26,7 @@ const socialIconMap: Record<string, SvgIconComponent> = {
 
 export default function SocialIcons({ social }: { social: Social[] }) {
   const { getLink } = useI18n();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -48,7 +50,7 @@ export default function SocialIcons({ social }: { social: Social[] }) {
           }
         )
       }
-      <ToolTip title="About Me">
+      <ToolTip title={t("About Me")}>
         <IconButton
           size="large"
           color="inherit"

@@ -22,12 +22,13 @@ export default function Footer() {
       }
     `
   )
+  const author = site.siteMetadata.author;
 
   return (
     <Paper component="footer" sx={{ p: 3, flexGrow: 0 }}>
       <Typography align="center" color="text.secondary">
         <Trans>
-          Built with <InlineIcon icon={redHeart} /> by {site.siteMetadata.author}.
+          Built with <InlineIcon icon={redHeart} /> by {{ author }}.
         </Trans>
         <Typography variant="body2">
           <Trans>
