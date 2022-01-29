@@ -3,12 +3,17 @@ module.exports = (options) => {
     postsPathTemplate = '/:lang?/posts/:segment+',
     languages = ['en'],
     defaultLanguage = 'en',
-    siteUrl,
+    siteUrl = "https://www.example.com",
     localeKey = 'locales',
-    i18nOptions
+    i18nOptions,
+    rssPath = 'rss.xml',
+    rssTitle
   } = options;
 
   return {
+    siteMetadata: {
+      siteUrl: siteUrl,
+    },
     plugins: [
       `gatsby-plugin-react-helmet`,
       `gatsby-theme-material-ui`,
@@ -61,7 +66,50 @@ module.exports = (options) => {
           ],
           ...i18nOptions
         }
-      }
+      },
+      {
+        resolve: `gatsby-plugin-feed-mdx`,
+        options: {
+          query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl
+              }
+            }
+          }`,
+          feeds: [
+            {
+              serialize: ({ query: { allBlogPost } }) =>
+                allBlogPost.nodes.map(post => ({
+                  title: post.title,
+                  description: post.excerpt,
+                  date: post.date,
+                  url: new URL(post.slug, siteUrl).href,
+                  guid: post.id,
+                  custom_elements: [{ "content:encoded": post.html }]
+                })),
+              query: `
+                {
+                  allBlogPost(sort: { fields: [date, title], order: DESC }, limit: 1000) {
+                    nodes {
+                      id
+                      excerpt
+                      body
+                      html
+                      slug
+                      title
+                      date
+                    }
+                  }
+                }
+              `,
+              output: rssPath,
+              title: rssTitle
+            }
+          ]
+        }
+      },
     ]
   };
 }

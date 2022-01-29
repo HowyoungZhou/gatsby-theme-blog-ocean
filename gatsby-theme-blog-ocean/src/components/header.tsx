@@ -16,6 +16,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Toolbar from '@mui/material/Toolbar';
 import ToolTip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
+import { graphql, useStaticQuery } from 'gatsby';
 import { Trans, useTranslation } from 'gatsby-plugin-react-i18next';
 import { Button, IconButton, Link } from 'gatsby-theme-material-ui';
 import React from 'react';
@@ -25,33 +26,42 @@ import { ThemeMode, useMode } from './theme-context';
 function useModeMap(): Record<ThemeMode, { name: string; icon: SvgIconComponent }> {
   const { t } = useTranslation();
 
-  return React.useMemo(
-    () => ({
-      light: {
-        name: t('Light'),
-        icon: BrightnessHighIcon,
-      },
-      dark: {
-        name: t('Dark'),
-        icon: Brightness4Icon,
-      },
-      auto: {
-        name: t('System Default'),
-        icon: BrightnessAutoIcon,
-      }
-    }), []
-  );
+  return {
+    light: {
+      name: t('Light'),
+      icon: BrightnessHighIcon,
+    },
+    dark: {
+      name: t('Dark'),
+      icon: Brightness4Icon,
+    },
+    auto: {
+      name: t('System Default'),
+      icon: BrightnessAutoIcon,
+    }
+  }
 }
 
 function languageName(lang: string) {
   const { language } = useI18n();
-  return React.useMemo(
-    () => {
-      const origName = new Intl.DisplayNames([lang], { type: 'language' }).of(lang);
-      const name = new Intl.DisplayNames([language], { type: 'language' }).of(lang);
-      return origName == name ? origName : `${origName} (${name})`
-    }, [lang, language]
+  const origName = new Intl.DisplayNames([lang], { type: 'language' }).of(lang);
+  const name = new Intl.DisplayNames([language], { type: 'language' }).of(lang);
+  return origName == name ? origName : `${origName} (${name})`
+}
+
+function rssPath() {
+  const { allSitePlugin } = useStaticQuery(
+    graphql`
+      query {
+        allSitePlugin(filter: {name: {eq: "gatsby-theme-blog-ocean"}}) {
+          nodes {
+            pluginOptions
+          }
+        }
+      }
+    `
   );
+  return allSitePlugin.nodes[0].pluginOptions.rssPath;
 }
 
 function ThemeIconButton() {
@@ -147,7 +157,7 @@ function ButtonGroup() {
           edge="end"
           aria-label="rss feed"
           color="inherit"
-          to={''}
+          to={rssPath()}
         >
           <RssFeedIcon fontSize="small" />
         </IconButton>
@@ -242,7 +252,7 @@ function MobileMenu() {
         }
         <Divider />
 
-        <Link to={''} color="inherit" underline="none">
+        <Link to={rssPath()} color="inherit" underline="none">
           <MenuItem>
             <Trans>RSS Feed</Trans>
           </MenuItem>

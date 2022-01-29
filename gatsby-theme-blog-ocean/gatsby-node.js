@@ -17,7 +17,9 @@ exports.pluginOptionsSchema = ({ Joi }) => {
     i18nOptions: Joi.object().default({}),
     excerptLength: Joi.number().min(0).default(200).description('Length of the excerpt'),
     siteUrl: Joi.string().description('The URL of the size, e.g. https://www.example.com'),
-    localeKey: Joi.string().default('locales').description('The name of locale source given to the `gatsby-source-filesystem` plugin.')
+    localeKey: Joi.string().default('locales').description('The name of locale source given to the `gatsby-source-filesystem` plugin.'),
+    rssPath: Joi.string().default('/rss.xml').description('Path of the RSS feed file.'),
+    rssTitle: Joi.string().description('Title of the RSS feed file.'),
   });
 }
 
@@ -59,6 +61,7 @@ exports.createSchemaCustomization = ({ actions, schema }, themeOptions) => {
       id: ID!
       title: String!
       body: String!
+      html: String!
       slug: String!
       date: Date! @dateformat
       tags: [String]!
@@ -132,6 +135,10 @@ exports.createSchemaCustomization = ({ actions, schema }, themeOptions) => {
         body: {
           type: `String!`,
           resolve: mdxResolverPassthrough(`body`),
+        },
+        html: {
+          type: `String!`,
+          resolve: mdxResolverPassthrough(`html`),
         },
       },
       interfaces: [`Node`, `BlogPost`],
