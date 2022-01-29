@@ -6,6 +6,9 @@
   "repository": "https://github.com/HowyoungZhou/gatsby-theme-blog-ocean.git",
   "author": "Howyoung <howyoung3@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "extract": "yarn run babel --config-file ./babel-extract.config.js -o tmp/chunk.js 'src/**/*.{js,jsx,ts,tsx}' && rm -rf tmp"
+  },
   "peerDependencies": {
     "gatsby": "^4.4.0"
   },
@@ -38,5 +41,10 @@
     "react-helmet": "^6.1.0",
     "react-i18next": "^11.15.1",
     "remark-slug": "6.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.8",
+    "@babel/plugin-transform-typescript": "^7.16.8",
+    "babel-plugin-i18next-extract": "^0.8.3"
   }
 }

@@ -12,7 +12,9 @@
     "example"
   ],
   "scripts": {
-    "develop": "yarn workspace example develop"
+    "develop": "yarn workspace example develop",
+    "build": "yarn workspace example build",
+    "extract": "yarn workspace gatsby-theme-blog-ocean extract"
   },
   "packageManager": "yarn@3.1.1"
 }
