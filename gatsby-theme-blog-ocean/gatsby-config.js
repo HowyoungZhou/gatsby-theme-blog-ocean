@@ -4,6 +4,7 @@ module.exports = (options) => {
     languages = ['en'],
     defaultLanguage = 'en',
     siteUrl,
+    localeKey = 'locales',
     i18nOptions
   } = options;
 
@@ -27,14 +28,14 @@ module.exports = (options) => {
       {
         resolve: `gatsby-source-filesystem`,
         options: {
-          path: `locales`,
-          name: `locales`
+          path: `${__dirname}/src/locales`,
+          name: localeKey
         }
       },
       {
         resolve: `gatsby-plugin-react-i18next`,
         options: {
-          localeJsonSourceName: `locales`, // name given to `gatsby-source-filesystem` plugin.
+          localeJsonSourceName: localeKey, // name given to `gatsby-source-filesystem` plugin.
           languages,
           defaultLanguage,
           // if you are using Helmet, you must include siteUrl, and make sure you add http:https

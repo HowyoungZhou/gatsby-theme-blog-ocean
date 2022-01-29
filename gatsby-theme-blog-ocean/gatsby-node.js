@@ -16,7 +16,8 @@ exports.pluginOptionsSchema = ({ Joi }) => {
     defaultLanguage: Joi.string().default('en').description('Default language'),
     i18nOptions: Joi.object().default({}),
     excerptLength: Joi.number().min(0).default(200).description('Length of the excerpt'),
-    siteUrl: Joi.string().description('The URL of the size, e.g. https://www.example.com')
+    siteUrl: Joi.string().description('The URL of the size, e.g. https://www.example.com'),
+    localeKey: Joi.string().default('locales').description('The name of locale source given to the `gatsby-source-filesystem` plugin.')
   });
 }
 
