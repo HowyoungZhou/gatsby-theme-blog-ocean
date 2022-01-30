@@ -15,12 +15,17 @@ import Footer from '../components/footer';
 
 const cardSpacing = { xs: 1, sm: 2, md: 3 };
 
-const StyledAppBar = styled(AppBar)(() => ({
+const background = {
+  light: 'linear-gradient(180deg, rgba(17, 112, 142, 1) 0%, rgba(24, 121, 151, 1) 6.35%, rgba(42, 145, 177, 1) 16.9%, rgba(70, 183, 217, 1) 29.99%, rgba(219, 238, 224, 1) 49.94%, rgba(25, 189, 188, 1) 65.77%, rgba(15, 141, 153, 1) 81.91%, rgba(10, 72, 85, 1) 100%);',
+  dark: 'linear-gradient(180deg, rgba(5, 7, 34, 1) 0%, rgba(6, 13, 43, 1) 9.45%, rgba(10, 31, 69, 1) 25.12%, rgba(11, 37, 78, 1) 29.99%, rgba(33, 25, 73, 1) 49.48%, rgba(0, 37, 65, 1) 51.91%, rgba(1, 80, 128, 1) 76.51%, rgba(8, 92, 137, 1) 79.9%, rgba(155, 173, 176, 1) 100%);'
+};
+
+const StyledAppBar = styled(AppBar)<{ backgroundImage?: string }>(({ theme }) => ({
   color: '#fff',
   minHeight: '50vh',
   display: 'flex',
   justifyContent: 'space-between',
-  backgroundImage: `linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.8) 100%)`,
+  background: background[theme.palette.mode],
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover'
 }));
@@ -49,7 +54,7 @@ export default function Index({ data }: { data: Data }) {
   return (
     <>
       <Seo title={t("Home")} />
-      <StyledAppBar position="static">
+      <StyledAppBar position="static" backgroundImage={''}>
         <HeaderToolbar />
         <Box sx={{ mx: 4, my: 2 }}>
           <Typography variant="h3">
