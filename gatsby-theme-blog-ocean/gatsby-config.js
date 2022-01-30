@@ -3,6 +3,8 @@ module.exports = (options) => {
     postsPathTemplate = '/:lang?/posts/:segment+',
     languages = ['en'],
     defaultLanguage = 'en',
+    title = 'Ocean Blog',
+    description = 'A theme of blog and personal homepage for Gatsby.',
     siteUrl = "https://www.example.com",
     localeKey = 'locales',
     i18nOptions,
@@ -12,7 +14,9 @@ module.exports = (options) => {
 
   return {
     siteMetadata: {
-      siteUrl: siteUrl,
+      title,
+      description,
+      siteUrl,
     },
     plugins: [
       `gatsby-plugin-react-helmet`,
@@ -68,6 +72,23 @@ module.exports = (options) => {
         }
       },
       {
+        resolve: `gatsby-plugin-manifest`,
+        options: {
+          name: title,
+          short_name: title,
+          description,
+          start_url: `/`,
+          background_color: `#f7f0eb`,
+          theme_color: `#a2466c`,
+          display: `standalone`,
+          icon: `${__dirname}/src/images/gatsby-icon.png`
+        },
+      },
+      // this (optional) plugin enables Progressive Web App + Offline functionality
+      // To learn more, visit: https://gatsby.dev/offline
+      // WARN: list it after gatsby-plugin-manifest
+      `gatsby-plugin-offline`,
+      {
         resolve: `gatsby-plugin-feed-mdx`,
         options: {
           query: `
@@ -105,7 +126,7 @@ module.exports = (options) => {
                 }
               `,
               output: rssPath,
-              title: rssTitle
+              title: rssTitle || title
             }
           ]
         }
