@@ -45,8 +45,9 @@ interface Data {
 export default function Index({ data }: { data: Data }) {
   const { t } = useTranslation();
 
+  // Masonry behaves incorrectly on Firefox as a flex container
   return (
-    <Box sx={{ display: 'flex', minHeight: '100vh', flexDirection: 'column' }}>
+    <>
       <Seo title={t("Home")} />
       <StyledAppBar position="static">
         <HeaderToolbar />
@@ -67,7 +68,6 @@ export default function Index({ data }: { data: Data }) {
         sx={{
           pl: cardSpacing,
           my: { xs: 0.5, sm: 1, md: 2 },
-          flex: 1,
         }}>
         {
           data.allBlogPost.nodes.map((post) => (
@@ -86,7 +86,7 @@ export default function Index({ data }: { data: Data }) {
         }
       </Masonry>
       <Footer />
-    </Box>
+    </>
   );
 }
 
