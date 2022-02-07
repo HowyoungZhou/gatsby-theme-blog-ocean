@@ -9,19 +9,19 @@ const { createContentDigest, slash } = require(`gatsby-core-utils`)
 
 exports.pluginOptionsSchema = ({ Joi }) => {
   return Joi.object({
-    postsSource: Joi.string().default('posts').description('Name of the source passed to gatsby-source-filesystem'),
+    postsSource: Joi.string().default('posts').description('Name of the posts source passed to the `gatsby-source-filesystem` plugin'),
     postsFolderLayout: Joi.string().default('/:lang/:segment+').description('Layout of the posts folder'),
-    postsPathTemplate: Joi.string().default('/:lang?/posts/:segment+').description('Path template for posts'),
-    languages: Joi.array().items(Joi.string()).default(['en']).description('List of languages'),
+    postsPathTemplate: Joi.string().default('/:lang?/posts/:segment+').description('Path template for the posts'),
+    languages: Joi.array().items(Joi.string()).default(['en']).description('List of supported languages'),
     defaultLanguage: Joi.string().default('en').description('Default language'),
-    i18nOptions: Joi.object().default({}),
-    excerptLength: Joi.number().min(0).default(200).description('Length of the excerpt'),
-    title: Joi.string().default('Ocean Blog').description('The title of the site.'),
-    description: Joi.string().default('A theme of blog and personal homepage for Gatsby.').description('A description for the site.'),
-    siteUrl: Joi.string().description('The URL of the site, e.g. https://www.example.com'),
-    localeKey: Joi.string().default('locales').description('The name of locale source given to the `gatsby-source-filesystem` plugin.'),
-    rssPath: Joi.string().default('/rss.xml').description('Path of the RSS feed file.'),
-    rssTitle: Joi.string().description('Title of the RSS feed file.'),
+    i18nOptions: Joi.object().default({}).description('Custom i18n options'),
+    excerptLength: Joi.number().min(0).default(200).description('Length of the excerpt of posts'),
+    title: Joi.string().default('Ocean Blog').description('The title of the site'),
+    description: Joi.string().default('A theme of blog and personal homepage for Gatsby.').description('Description for the site'),
+    siteUrl: Joi.string().description('URL of the site, e.g. https://www.example.com'),
+    localesSource: Joi.string().default('locales').description('Name of locale source passed to the `gatsby-source-filesystem` plugin'),
+    rssPath: Joi.string().default('/rss.xml').description('Path for the RSS feed file'),
+    rssTitle: Joi.string().description('Title of the RSS feed'),
   });
 }
 

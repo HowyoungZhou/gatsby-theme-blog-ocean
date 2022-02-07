@@ -6,7 +6,7 @@ module.exports = (options) => {
     title = 'Ocean Blog',
     description = 'A theme of blog and personal homepage for Gatsby.',
     siteUrl = "https://www.example.com",
-    localeKey = 'locales',
+    localesSource = 'locales',
     i18nOptions,
     rssPath = 'rss.xml',
     rssTitle
@@ -38,13 +38,13 @@ module.exports = (options) => {
         resolve: `gatsby-source-filesystem`,
         options: {
           path: `${__dirname}/src/locales`,
-          name: localeKey
+          name: localesSource
         }
       },
       {
         resolve: `gatsby-plugin-react-i18next`,
         options: {
-          localeJsonSourceName: localeKey, // name given to `gatsby-source-filesystem` plugin.
+          localeJsonSourceName: localesSource, // name given to `gatsby-source-filesystem` plugin.
           languages,
           defaultLanguage,
           // if you are using Helmet, you must include siteUrl, and make sure you add http:https
