@@ -78,10 +78,14 @@ module.exports = (options) => {
           short_name: title,
           description,
           start_url: `/`,
-          background_color: `#f7f0eb`,
+          background_color: `#ffffff`,
           theme_color: `#a2466c`,
           display: `standalone`,
-          icon: `${__dirname}/src/images/gatsby-icon.png`
+          theme_color_in_head: false,
+          icon: `${__dirname}/static/icons/icon.svg`,
+          icon_options: {
+            purpose: `any maskable`,
+          },
         },
       },
       // this (optional) plugin enables Progressive Web App + Offline functionality
