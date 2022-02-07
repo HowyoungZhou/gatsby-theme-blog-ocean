@@ -1,8 +1,8 @@
-<p style="text-align: center;">
-<img src="gatsby-theme-blog-ocean\static\icons\icon.svg?raw=true" style="width: 200px;"/>
+<p align="center">
+<img src="gatsby-theme-blog-ocean\static\icons\icon.svg?raw=true" width="200"/>
 </p>
 
-<h1 style="text-align: center;">Gatsby Theme Blog Ocean</h1>
+<h1 align="center">Gatsby Theme Blog Ocean</h1>
 
 ## Description
 
