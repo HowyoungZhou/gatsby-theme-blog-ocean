@@ -1,11 +1,23 @@
 {
   "name": "gatsby-theme-blog-ocean",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A blog theme for Gatsby.",
   "main": "gatsby-config.js",
   "repository": "https://github.com/HowyoungZhou/gatsby-theme-blog-ocean.git",
   "author": "Howyoung <howyoung3@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-theme",
+    "blog",
+    "homepage",
+    "react",
+    "react-component",
+    "material-ui",
+    "mui",
+    "material design"
+  ],
   "scripts": {
     "extract": "yarn run babel --config-file ./babel-extract.config.js -o tmp/chunk.js 'src/**/*.{js,jsx,ts,tsx}' && rm -rf tmp"
   },
