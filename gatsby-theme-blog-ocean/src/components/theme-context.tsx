@@ -4,6 +4,7 @@ import {
 } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import * as React from 'react';
+import configTheme from './config-theme';
 
 export type ThemeMode = PaletteMode | 'auto';
 
@@ -21,7 +22,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       palette: {
         mode: paletteMode,
       },
-    }),
+    }, configTheme(paletteMode)),
     [paletteMode]
   );
 
