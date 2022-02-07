@@ -1,0 +1,17 @@
+{
+  "About Me": "About Me",
+  "Built with <1></1> by {{author}}.": "Built with <1></1> by {{author}}.",
+  "Contents": "Contents",
+  "Dark": "Dark",
+  "Home": "Home",
+  "Language": "Language",
+  "Light": "Light",
+  "Menu": "Menu",
+  "No more posts at now.": "No more posts at now.",
+  "Posts": "Posts",
+  "RSS Feed": "RSS Feed",
+  "System Default": "System Default",
+  "The theme is designed by <1>Howyoung</1> and powered by <3></3> Gatsby and <5></5> Material UI.": "The theme is designed by <1>Howyoung</1> and powered by <3></3> Gatsby and <5></5> Material UI.",
+  "Theme": "Theme",
+  "greeting": "Hi! I'm {{ author }}."
+}
