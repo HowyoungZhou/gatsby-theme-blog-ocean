@@ -35,7 +35,7 @@ export default function SocialIcons({ social }: { social: Social[] }) {
           ({ name, url }, i) => {
             const Icon = socialIconMap[name];
             return (
-              <ToolTip title={name}>
+              <ToolTip key={name} title={name}>
                 <IconButton
                   size="large"
                   color="inherit"

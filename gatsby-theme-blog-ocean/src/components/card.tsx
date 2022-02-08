@@ -28,7 +28,7 @@ export default function ContentCard({ title, subtitle, description, image, link 
           <CardMedia>
             <GatsbyImage
               image={image.data}
-              alt={image.alt}
+              alt={image.alt || ""}
               objectFit="cover"
               style={{ width: '100%', height: '100%' }}
             />

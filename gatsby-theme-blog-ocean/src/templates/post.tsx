@@ -44,7 +44,6 @@ const Main = styled('div', {
     duration: theme.transitions.duration.leavingScreen,
   }),
   ...(open && {
-    // width: `calc(100% - ${drawerWidth})`,
     marginLeft: `${drawerWidth}`,
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.easeOut,
@@ -182,7 +181,7 @@ export default function Post({ data }) {
                     objectFit="cover"
                     style={{ width: '100%', height: '100%' }}
                     image={post.image.childImageSharp.gatsbyImageData}
-                    alt={post.imageAlt}
+                    alt={post.imageAlt || ""}
                   />
                 )
               }

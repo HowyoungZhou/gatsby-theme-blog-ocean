@@ -79,12 +79,12 @@ function PostsList({ posts }: { posts: Post[] }) {
         posts.map(
           post => (
             <Card
+              key={post.id}
               link={post.slug}
               title={post.title}
               subtitle={post.date}
               image={
                 post.image && {
-                  // caption: post.imageCaptionText,
                   alt: post.imageAlt,
                   data: post.image.childImageSharp.gatsbyImageData
                 }
