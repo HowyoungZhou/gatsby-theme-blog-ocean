@@ -1,5 +1,5 @@
 <p align="center">
-<img src="static/icons/icon.svg?raw=true" width="200"/>
+<img src="https://github.com/HowyoungZhou/gatsby-theme-blog-ocean/raw/main/gatsby-theme-blog-ocean/static/icons/icon.svg?raw=true" width="200"/>
 </p>
 
 <h1 align="center">Gatsby Theme Blog Ocean</h1>
