@@ -4,7 +4,7 @@
 
 <h1 align="center">Gatsby Theme Blog Ocean</h1>
 
-Blog Ocean is a Gatsby theme for personal homepages and blogs. It features material design and built-in [MDX](https://mdxjs.com/) support, dark mode, SEO-friendly localization, and more! You can have a look at the live demo at [www.howyoung.dev](https://www.howyoung.dev).
+Blog Ocean is a Gatsby theme for personal homepages and blogs. It features material design, built-in [MDX](https://mdxjs.com/) support, dark mode, SEO-friendly localization, and more! You can have a look at the live demo at [www.howyoung.dev](https://www.howyoung.dev).
 
 The theme is still under development and more thrilling features will be added to it soon. Meanwhile, it is designed with extendibility in mind, allowing you to customize each part of the website as you wish. Please refer to the section [Customization](#customization) for more details.
 
