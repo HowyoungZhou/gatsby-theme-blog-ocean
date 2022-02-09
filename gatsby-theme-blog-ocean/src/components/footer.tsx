@@ -26,7 +26,7 @@ export default function Footer() {
 
   return (
     <Paper component="footer" sx={{ p: 3, flexGrow: 0 }}>
-      <Typography align="center" color="text.secondary">
+      <Typography align="center" color="text.secondary" component="div">
         <Trans>
           Built with <InlineIcon icon={redHeart} /> by {{ author }}.
         </Trans>
