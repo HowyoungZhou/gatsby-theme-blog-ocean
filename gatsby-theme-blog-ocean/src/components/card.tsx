@@ -30,7 +30,7 @@ export default function ContentCard({ title, subtitle, description, image, link 
               image={image.data}
               alt={image.alt || ""}
               objectFit="cover"
-              style={{ width: '100%', height: '100%' }}
+              style={{ width: '100%', height: '100%', maxHeight: '35vh' }}
             />
           </CardMedia>
         }
