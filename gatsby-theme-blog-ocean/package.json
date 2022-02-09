@@ -35,7 +35,6 @@
     "@mui/icons-material": "^5.2.4",
     "@mui/lab": "^5.0.0-alpha.62",
     "@mui/material": "^5.2.4",
-    "@types/react-helmet": "^6.1.5",
     "gatsby-core-utils": "^3.5.2",
     "gatsby-plugin-feed-mdx": "^1.1.0",
     "gatsby-plugin-image": "^2.4.0",
@@ -60,6 +59,7 @@
   "devDependencies": {
     "@babel/cli": "^7.16.8",
     "@babel/plugin-transform-typescript": "^7.16.8",
+    "@types/react-helmet": "^6.1.5",
     "babel-plugin-i18next-extract": "^0.8.3"
   }
 }
