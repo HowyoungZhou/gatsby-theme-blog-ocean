@@ -30,7 +30,7 @@ export default function Footer() {
         <Trans>
           Built with <InlineIcon icon={redHeart} /> by {{ author }}.
         </Trans>
-        <Typography variant="body2" component="span">
+        <Typography variant="body2" component="div">
           <Trans>
             The theme is designed by <Link to="https://www.howyoung.dev">Howyoung</Link> and powered by <InlineIcon icon={GatsbyIcon} /> Gatsby and <InlineIcon icon={MaterialUi} /> Material UI.
           </Trans>
