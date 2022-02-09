@@ -43,7 +43,7 @@ const mdxResolverPassthrough = (fieldName) => async (
   return result;
 }
 
-function processRelativeImage(source, context, type) {
+async function processRelativeImage(source, context, type) {
   // Image is a relative path - find a corresponding file
   const mdxFileNode = context.nodeModel.findRootNodeAncestor(
     source,
@@ -52,8 +52,14 @@ function processRelativeImage(source, context, type) {
   if (!mdxFileNode) return;
   const imagePath = slash(path.join(mdxFileNode.dir, source[type]))
 
-  const fileNodes = context.nodeModel.getAllNodes({ type: `File` })
-  return fileNodes.find(node => node.absolutePath === imagePath)
+  return await context.nodeModel.findOne({
+    type: 'File',
+    query: {
+      filter: {
+        absolutePath: { eq: imagePath }
+      }
+    }
+  });
 }
 
 exports.createSchemaCustomization = ({ actions, schema }, themeOptions) => {
@@ -105,7 +111,7 @@ exports.createSchemaCustomization = ({ actions, schema }, themeOptions) => {
             if (source.image___NODE) {
               return context.nodeModel.getNodeById({ id: source.image___NODE })
             } else if (source.image) {
-              return processRelativeImage(source, context, `image`)
+              return await processRelativeImage(source, context, `image`)
             }
           },
         },
@@ -126,7 +132,7 @@ exports.createSchemaCustomization = ({ actions, schema }, themeOptions) => {
                 id: source.socialImage___NODE,
               })
             } else if (source.socialImage) {
-              return processRelativeImage(source, context, `socialImage`)
+              return await processRelativeImage(source, context, `socialImage`)
             }
           },
         },
