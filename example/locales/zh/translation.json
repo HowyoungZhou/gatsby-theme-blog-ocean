@@ -1,0 +1,18 @@
+{
+  "About Me": "关于我",
+  "Built with <1></1> by {{author}}.": "由 {{author}} 用 <1></1> 构建。",
+  "Contents": "目录",
+  "Dark": "深色",
+  "Home": "主页",
+  "Language": "语言",
+  "Light": "浅色",
+  "Menu": "菜单",
+  "No more posts at now.": "暂无更多博客。",
+  "Posts": "博客",
+  "RSS Feed": "RSS 订阅",
+  "System Default": "系统默认",
+  "The theme is designed by <1>Howyoung</1> and powered by <3></3> Gatsby and <5></5> Material UI.": "主题由 <1>Howyoung</1> 设计并由 <3></3> Gatsby 和 <5></5> Material UI 强力驱动。",
+  "Theme": "主题",
+  "greeting": "Hi! 我是 {{ author }}。",
+  "description": "在这里输入描述文本。"
+}

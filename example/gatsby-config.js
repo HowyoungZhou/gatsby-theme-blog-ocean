@@ -1,8 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Ocean Blog',
     author: 'Howyoung',
-    description: 'A Gatsby theme for oceanic design',
     social: [
       {
         name: `GitHub`,
@@ -23,8 +21,25 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `locales`,
+        name: `locales`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `assets`,
+        name: `assets`
+      }
+    },
+    {
       resolve: `gatsby-theme-blog-ocean`,
       options: {
+        title: 'Ocean Blog',
+        description: 'Here is the description of the site.',
+        siteUrl: 'https://www.howyoung.dev',
         languages: ['en', 'zh']
       }
     }
