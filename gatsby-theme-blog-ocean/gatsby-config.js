@@ -9,7 +9,8 @@ module.exports = (options) => {
     localesSource = 'locales',
     i18nOptions,
     rssPath = 'rss.xml',
-    rssTitle
+    rssTitle,
+    maxImageWidth = 1920
   } = options;
 
   return {
@@ -28,6 +29,17 @@ module.exports = (options) => {
         resolve: `gatsby-plugin-mdx`,
         options: {
           extensions: [".md", ".mdx"],
+          gatsbyRemarkPlugins: [
+            {
+              resolve: `gatsby-remark-images`,
+              options: {
+                maxWidth: maxImageWidth,
+                linkImagesToOriginal: false,
+              },
+            },
+            { resolve: `gatsby-remark-copy-linked-files` },
+            { resolve: `gatsby-remark-smartypants` },
+          ],
           remarkPlugins: [
             // We will migrate to rehype-slug when Gatsby supports ESM
             require(`remark-slug`)

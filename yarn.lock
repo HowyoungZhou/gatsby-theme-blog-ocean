@@ -5796,6 +5796,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"css-selector-parser@npm:^1.0.0":
+  version: 1.4.1
+  resolution: "css-selector-parser@npm:1.4.1"
+  checksum: 31948754e579eedb918c2fb2d5a4c643ec769ff4a0d03a7bd10b43b25d44973f8cbe86d7ec00c4494269f7ff38b3d2ab0f6ea801cece0ef0974e74469dff770c
+  languageName: node
+  linkType: hard
+
 "css-tree@npm:1.0.0-alpha.37":
   version: 1.0.0-alpha.37
   resolution: "css-tree@npm:1.0.0-alpha.37"
@@ -7852,6 +7859,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"gatsby-core-utils@npm:^3.7.0":
+  version: 3.7.0
+  resolution: "gatsby-core-utils@npm:3.7.0"
+  dependencies:
+    "@babel/runtime": ^7.15.4
+    ci-info: 2.0.0
+    configstore: ^5.0.1
+    fastq: ^1.13.0
+    file-type: ^16.5.3
+    fs-extra: ^10.0.0
+    got: ^11.8.3
+    lock: ^1.1.0
+    node-object-hash: ^2.3.10
+    proper-lockfile: ^4.1.2
+    tmp: ^0.2.1
+    xdg-basedir: ^4.0.0
+  checksum: 401790292ba0173a89f169b847790ccafc7131939f9aaa95696cb34fa0c290921337c0429acf0231ba0a10a7089d460f79f720819ca0edee7ee2a62ed5e646c3
+  languageName: node
+  linkType: hard
+
 "gatsby-graphiql-explorer@npm:^2.5.0":
   version: 2.5.0
   resolution: "gatsby-graphiql-explorer@npm:2.5.0"
@@ -8236,6 +8263,60 @@ __metadata:
   languageName: node
   linkType: hard
 
+"gatsby-remark-copy-linked-files@npm:^5.7.0":
+  version: 5.7.0
+  resolution: "gatsby-remark-copy-linked-files@npm:5.7.0"
+  dependencies:
+    "@babel/runtime": ^7.15.4
+    cheerio: ^1.0.0-rc.10
+    fs-extra: ^10.0.0
+    is-relative-url: ^3.0.0
+    lodash: ^4.17.21
+    path-is-inside: ^1.0.2
+    probe-image-size: ^6.0.0
+    unist-util-visit: ^2.0.3
+  peerDependencies:
+    gatsby: ^4.0.0-next
+  checksum: 3a98e03567e3a0c11f016cfb61cc78d489fd34d888d7e7265118786aa053eca2521848755022be206c5626b58c390b41e0fdc8920b38332d18caacd8f3499367
+  languageName: node
+  linkType: hard
+
+"gatsby-remark-images@npm:^6.7.0":
+  version: 6.7.0
+  resolution: "gatsby-remark-images@npm:6.7.0"
+  dependencies:
+    "@babel/runtime": ^7.15.4
+    chalk: ^4.1.2
+    cheerio: ^1.0.0-rc.10
+    gatsby-core-utils: ^3.7.0
+    is-relative-url: ^3.0.0
+    lodash: ^4.17.21
+    mdast-util-definitions: ^4.0.0
+    potrace: ^2.1.8
+    query-string: ^6.14.1
+    unist-util-select: ^3.0.4
+    unist-util-visit-parents: ^3.1.1
+  peerDependencies:
+    gatsby: ^4.0.0-next
+    gatsby-plugin-sharp: ^4.0.0-next
+  checksum: 1d0da3970eaf995534114d0664c4ef7a4489d1ca5939c790837056a59d1dc65a242816ba415a9a89ed0468f92b195326fd40120b04f69b5dd424ec65c4321df6
+  languageName: node
+  linkType: hard
+
+"gatsby-remark-smartypants@npm:^5.7.0":
+  version: 5.7.0
+  resolution: "gatsby-remark-smartypants@npm:5.7.0"
+  dependencies:
+    "@babel/runtime": ^7.15.4
+    retext: ^7.0.1
+    retext-smartypants: ^4.0.0
+    unist-util-visit: ^2.0.3
+  peerDependencies:
+    gatsby: ^4.0.0-next
+  checksum: a825c703a76b4f3e3d978af806ca2e0c0c53f7c021d53a5f936ba901d06fa4d8e214834be8170f063cff7bbe18479acd76ffcae3e99f783e289b5db689892ef5
+  languageName: node
+  linkType: hard
+
 "gatsby-source-filesystem@npm:^4.4.0, gatsby-source-filesystem@npm:^4.5.2":
   version: 4.5.2
   resolution: "gatsby-source-filesystem@npm:4.5.2"
@@ -8314,6 +8395,9 @@ __metadata:
     gatsby-plugin-react-i18next: ^1.2.2
     gatsby-plugin-sharp: ^4.4.0
     gatsby-plugin-typescript: ^4.4.0
+    gatsby-remark-copy-linked-files: ^5.7.0
+    gatsby-remark-images: ^6.7.0
+    gatsby-remark-smartypants: ^5.7.0
     gatsby-source-filesystem: ^4.4.0
     gatsby-theme-material-ui: ^5.1.0
     gatsby-transformer-sharp: ^4.4.0
@@ -11904,6 +11988,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"not@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "not@npm:0.1.0"
+  checksum: 8043bb53bc1c465a4a4f751394f11aad1d8ccae08dd2123310c6a5d160a5ad4138706d50af905cf114b72507a328585d4f2a73cd3d6730981dd2675aa9c8436f
+  languageName: node
+  linkType: hard
+
 "npm-run-path@npm:^2.0.0":
   version: 2.0.2
   resolution: "npm-run-path@npm:2.0.2"
@@ -11955,7 +12046,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nth-check@npm:^2.0.1":
+"nth-check@npm:^2.0.0, nth-check@npm:^2.0.1":
   version: 2.0.1
   resolution: "nth-check@npm:2.0.1"
   dependencies:
@@ -12609,6 +12700,13 @@ __metadata:
   version: 1.0.1
   resolution: "path-is-absolute@npm:1.0.1"
   checksum: 060840f92cf8effa293bcc1bea81281bd7d363731d214cbe5c227df207c34cd727430f70c6037b5159c8a870b9157cba65e775446b0ab06fd5ecc7e54615a3b8
+  languageName: node
+  linkType: hard
+
+"path-is-inside@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "path-is-inside@npm:1.0.2"
+  checksum: 0b5b6c92d3018b82afb1f74fe6de6338c4c654de4a96123cb343f2b747d5606590ac0c890f956ed38220a4ab59baddfd7b713d78a62d240b20b14ab801fa02cb
   languageName: node
   linkType: hard
 
@@ -14216,6 +14314,46 @@ __metadata:
     parse-english: ^4.0.0
     unherit: ^1.0.4
   checksum: 0a8f164753eb187a4c02a4e55bf70bf72a3a41055a8d6e2b864fb7e601ceae20e31e726d14e8aca69b769e26056e6f15a76e36ac74c6ad24165ffe0d24f5c34c
+  languageName: node
+  linkType: hard
+
+"retext-latin@npm:^2.0.0":
+  version: 2.0.4
+  resolution: "retext-latin@npm:2.0.4"
+  dependencies:
+    parse-latin: ^4.0.0
+    unherit: ^1.0.4
+  checksum: bd549099bcfa0b420e87ba985d2f53333f8aaff006ae0222b8cdfc87dd19f981495c07f90c5bca006ff34a515ccbdc862c21f9d2c2467363160d4adc5c8684dc
+  languageName: node
+  linkType: hard
+
+"retext-smartypants@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "retext-smartypants@npm:4.0.0"
+  dependencies:
+    nlcst-to-string: ^2.0.0
+    unist-util-visit: ^2.0.0
+  checksum: a959ea698568ed5db71337fc341513e685c1b45bc5b38c76d5822fc16d61daaa7b49b8c8f4c6255781e9c173a7e89a6db68a5a7dc9a6cea4370f060aed4da045
+  languageName: node
+  linkType: hard
+
+"retext-stringify@npm:^2.0.0":
+  version: 2.0.4
+  resolution: "retext-stringify@npm:2.0.4"
+  dependencies:
+    nlcst-to-string: ^2.0.0
+  checksum: 20109430b74d1817d95c8eca6b426370d2659a327c0bd06ba48ed6f347f25a0c5669e7338e9eb58065c8a11e87a82a9f0b0af6d45dabcbe30a8cebd49246fd60
+  languageName: node
+  linkType: hard
+
+"retext@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "retext@npm:7.0.1"
+  dependencies:
+    retext-latin: ^2.0.0
+    retext-stringify: ^2.0.0
+    unified: ^8.0.0
+  checksum: 98dccbb6e421bc07900dcbb3b4f180329b8b0051ccd25c60a016f0dcea87f6b21245ddd6395f3ddc819a692b74b92b04b2077ba401b5c9f410f6da06111c60d5
   languageName: node
   linkType: hard
 
@@ -15995,7 +16133,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unified@npm:^8.4.2":
+"unified@npm:^8.0.0, unified@npm:^8.4.2":
   version: 8.4.2
   resolution: "unified@npm:8.4.2"
   dependencies:
@@ -16143,6 +16281,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"unist-util-select@npm:^3.0.4":
+  version: 3.0.4
+  resolution: "unist-util-select@npm:3.0.4"
+  dependencies:
+    css-selector-parser: ^1.0.0
+    not: ^0.1.0
+    nth-check: ^2.0.0
+    unist-util-is: ^4.0.0
+    zwitch: ^1.0.0
+  checksum: e6bdb4c79037e7d398a7682e3a2fb461e4b9ea8305e2228f54c47a3a27759e0bfc9f31eee763c31978b337d55f4a2216b974d3b7fcba058b1267ca1fc1e3ccfb
+  languageName: node
+  linkType: hard
+
 "unist-util-stringify-position@npm:^1.0.0, unist-util-stringify-position@npm:^1.1.1":
   version: 1.1.2
   resolution: "unist-util-stringify-position@npm:1.1.2"
@@ -16175,7 +16326,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unist-util-visit-parents@npm:^3.0.0":
+"unist-util-visit-parents@npm:^3.0.0, unist-util-visit-parents@npm:^3.1.1":
   version: 3.1.1
   resolution: "unist-util-visit-parents@npm:3.1.1"
   dependencies:
@@ -16185,7 +16336,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unist-util-visit@npm:2.0.3, unist-util-visit@npm:^2.0.0":
+"unist-util-visit@npm:2.0.3, unist-util-visit@npm:^2.0.0, unist-util-visit@npm:^2.0.3":
   version: 2.0.3
   resolution: "unist-util-visit@npm:2.0.3"
   dependencies:
