@@ -7,7 +7,7 @@ import { HeaderToolbar } from '../components/header';
 
 const StyledAppBar = styled(AppBar)<{ background?: string }>(({ background }) => ({
   color: '#fff',
-  minHeight: '50vh',
+  minHeight: '45vh',
   display: 'flex',
   justifyContent: 'space-between',
   background: background
