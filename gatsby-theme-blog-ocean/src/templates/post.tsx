@@ -80,15 +80,17 @@ function useOnScroll(callback: () => void) {
 }
 
 function TocTreeView({ toc, sx, onClick }: { toc: TocNode, sx?: SxProps<Theme>, onClick?: React.MouseEventHandler }) {
-  const tocItems = React.useMemo(() => Array.from(traverseToc(toc)).slice(1), [toc]);
+  const tocItems = React.useMemo(() => Array.from(traverseToc(toc)).filter(item => item.title), [toc]);
   const [activeItem, setActiveItem] = React.useState<string>();
 
   const updateActive = React.useCallback(
     () => {
-      const url = tocItems.find(item => document?.querySelector(item.url)?.getBoundingClientRect().top > 0).url;
-      setActiveItem(url);
+      const activeItem = tocItems.slice().reverse().find(
+        item => document?.querySelector(item.url)?.getBoundingClientRect().top < 64
+      );
+      setActiveItem(activeItem?.url);
     },
-    [activeItem, tocItems]
+    [setActiveItem, tocItems]
   );
 
   useOnScroll(updateActive);
@@ -173,7 +175,7 @@ export default function Post({ data }) {
           )}
         />
         <Box component="main" sx={{ flex: 1 }}>
-          <Container>
+          <Container sx={{ overflowX: "auto" }}>
             <Box sx={{ my: 3 }}>
               {
                 post.image && (
