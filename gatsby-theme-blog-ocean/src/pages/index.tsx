@@ -37,10 +37,10 @@ export default function Index({ data }: { data: Data }) {
       <Seo title={t("Home")} />
       <Banner>
         <Typography variant="h3">
-          {t('greeting', "Hi! I'm {{ author }}.", { author: data.site.siteMetadata.author })}
+          {t('banner.greeting', "Hi! I'm {{ author }}.", { author: data.site.siteMetadata.author })}
         </Typography>
         <Typography variant="h5">
-          {t('description', data.site.siteMetadata.description) /* i18next-extract-disable-line */}
+          {t('banner.introduction', 'Welcome to my blog!')}
         </Typography>
         <SocialIcons social={data.site.siteMetadata.social} />
       </Banner>

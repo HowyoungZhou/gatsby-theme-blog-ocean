@@ -13,6 +13,6 @@
   "System Default": "系统默认",
   "The theme is designed by <1>Howyoung</1> and powered by <3></3> Gatsby and <5></5> Material UI.": "主题由 <1>Howyoung</1> 设计并由 <3></3> Gatsby 和 <5></5> Material UI 强力驱动。",
   "Theme": "主题",
-  "greeting": "Hi! 我是 {{ author }}。",
-  "description": "在这里输入描述文本。"
+  "banner.greeting": "Hi! 我是 {{ author }}。",
+  "banner.introduction": "欢迎来我的博客！"
 }

@@ -13,5 +13,6 @@
   "System Default": "System Default",
   "The theme is designed by <1>Howyoung</1> and powered by <3></3> Gatsby and <5></5> Material UI.": "The theme is designed by <1>Howyoung</1> and powered by <3></3> Gatsby and <5></5> Material UI.",
   "Theme": "Theme",
-  "greeting": "Hi! I'm {{ author }}."
+  "banner.greeting": "Hi! I'm {{ author }}.",
+  "banner.introduction": "Welcome to my blog! I love Gatsby!!"
 }
