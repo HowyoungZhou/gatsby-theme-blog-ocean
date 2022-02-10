@@ -1,6 +1,6 @@
 {
   "name": "gatsby-theme-blog-ocean",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A blog theme for Gatsby.",
   "main": "gatsby-config.js",
   "repository": "https://github.com/HowyoungZhou/gatsby-theme-blog-ocean.git",
