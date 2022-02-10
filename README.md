@@ -4,7 +4,7 @@
 
 <h1 align="center">Gatsby Theme Blog Ocean</h1>
 
-Blog Ocean is a Gatsby theme for personal homepages and blogs. It features material design, built-in [MDX](https://mdxjs.com/) support, dark mode, SEO-friendly localization, and more! You can have a look at the live demo at [www.howyoung.dev](https://www.howyoung.dev).
+Blog Ocean is a Gatsby theme for personal homepages and blogs. It features the material design, built-in [MDX](https://mdxjs.com/) support, dark mode, SEO-friendly localization, and more! You can have a look at the live demo at [www.howyoung.dev](https://www.howyoung.dev).
 
 The theme is still under development and more thrilling features will be added to it soon. Meanwhile, it is designed with extendibility in mind, allowing you to customize each part of the website as you wish. Please refer to the section [Customization](#customization) for more details.
 
@@ -68,7 +68,7 @@ For more options available, please refer to the section [Available options](avai
 |title|string|`'Ocean Blog'`|The title of the site|
 |description|string|`'A theme of blog and personal homepage for Gatsby.'`|Description for the site|
 |siteUrl|string|`'https://www.example.com'`|URL of the site|
-|localesSource|string|`'locales'`|Name of locale source passed to the `gatsby-source-filesystem` plugin|
+|localesSource|string|`'builtin-locales'`|Name of locale source passed to the `gatsby-source-filesystem` plugin|
 |rssPath|string|`'/rss.xml'`|Path for the RSS feed file|
 |rssTitle|string|Same as `title`|Title of the RSS feed|
 
@@ -119,7 +119,7 @@ module.exports = {
 
 ### Add a new locale
 
-To customize the text or add the translation for a new language. You need to add a locales folder and again expose it as a source using the `gatsby-source-filesystem` plugin.
+To customize the text or add the translation for a new language. You need to add a locales folder and again expose it as a source using the `gatsby-source-filesystem` plugin, and modify the theme options to add new languages and locales source name to it.
 
 ```js
 // plugins in gatsby-config.js
@@ -129,10 +129,18 @@ To customize the text or add the translation for a new language. You need to add
     path: `locales`,
     name: `locales`
   }
+},
+{
+  resolve: `gatsby-theme-blog-ocean`,
+  options: {
+    // ...
+    languages: ['en', 'zh'], // Add new languages
+    localesSource: 'locales' // Pass locales source to the theme
+  }
 }
 ```
 
-Now copy the `en` folder in `gatsby-theme-blog-ocean/src/locales`, rename it to the new language code, and replace the translation in the `.json` files inside.
+Now copy the `en` folder in `gatsby-theme-blog-ocean/src/locales` to the `locales` folder in your project, and add other languages by replacing the translation in the `.json` files inside.
 
 ### Overwrite components or pages
 
