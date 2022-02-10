@@ -6,7 +6,7 @@ module.exports = (options) => {
     title = 'Ocean Blog',
     description = 'A theme of blog and personal homepage for Gatsby.',
     siteUrl = "https://www.example.com",
-    localesSource = 'locales',
+    localesSource = 'builtin-locales',
     i18nOptions,
     rssPath = 'rss.xml',
     rssTitle,
@@ -49,8 +49,8 @@ module.exports = (options) => {
       {
         resolve: `gatsby-source-filesystem`,
         options: {
-          path: `${__dirname}/src/locales`,
-          name: localesSource
+          path: `${__dirname}/locales`,
+          name: 'builtin-locales'
         }
       },
       {

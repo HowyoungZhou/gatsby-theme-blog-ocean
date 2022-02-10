@@ -16,21 +16,21 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `posts`,
+        path: `${__dirname}/posts`,
         name: `posts`
       }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `locales`,
+        path: `${__dirname}/locales`,
         name: `locales`
       }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `assets`,
+        path: `${__dirname}/assets`,
         name: `assets`
       }
     },
@@ -40,7 +40,8 @@ module.exports = {
         title: 'Ocean Blog',
         description: 'Here is the description of the site.',
         siteUrl: 'https://www.howyoung.dev',
-        languages: ['en', 'zh']
+        languages: ['en', 'zh'],
+        localesSource: 'locales'
       }
     }
   ],
