@@ -7,10 +7,11 @@ module.exports = (options) => {
     description = 'A theme of blog and personal homepage for Gatsby.',
     siteUrl = "https://www.example.com",
     localesSource = 'builtin-locales',
-    i18nOptions,
+    i18nOptions = {},
     rssPath = 'rss.xml',
     rssTitle,
-    maxImageWidth = 1920
+    maxImageWidth = 1920,
+    manifest = {}
   } = options;
 
   return {
@@ -91,13 +92,13 @@ module.exports = (options) => {
           description,
           start_url: `/`,
           background_color: `#ffffff`,
-          theme_color: `#a2466c`,
           display: `standalone`,
           theme_color_in_head: false,
           icon: `${__dirname}/static/icons/icon.svg`,
           icon_options: {
             purpose: `any maskable`,
           },
+          ...manifest
         },
       },
       // this (optional) plugin enables Progressive Web App + Offline functionality

@@ -71,6 +71,7 @@ For more options available, please refer to the section [Available options](avai
 |localesSource|string|`'builtin-locales'`|Name of locale source passed to the `gatsby-source-filesystem` plugin|
 |rssPath|string|`'/rss.xml'`|Path for the RSS feed file|
 |rssTitle|string|Same as `title`|Title of the RSS feed|
+|manifest|object|`{}`|Custom PWA manifest|
 
 ## Examples of usage
 
