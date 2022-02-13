@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { useTheme } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
@@ -9,9 +9,10 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import { Link } from "gatsby-theme-material-ui";
-import { useTheme } from '@mui/material';
-
-// import CodeBlock from './CodeBlock';
+import prismDarkTheme from 'prism-react-renderer/themes/dracula';
+import prismLightTheme from 'prism-react-renderer/themes/github';
+import React, { memo } from 'react';
+import CodeBlock from '../components/code-block';
 
 const components = {
   p: (() => {
@@ -56,7 +57,7 @@ const components = {
     return memo(Ul);
   })(),
   ol: (() => {
-    const Ol = props => <Typography {...props} component="ol" style={{ marginTop: 0, marginBottom:16 }} />;
+    const Ol = props => <Typography {...props} component="ol" style={{ marginTop: 0, marginBottom: 16 }} />;
     return memo(Ol);
   })(),
   li: (() => {
@@ -91,7 +92,19 @@ const components = {
     const THead = props => <TableHead {...props} />;
     return memo(THead);
   })(),
-  //   code: CodeBlock,
+  code: (() => {
+    const CodeBlk = props => {
+      const theme = useTheme();
+      return (
+        <CodeBlock
+          {...props}
+          style={{ padding: 20, overflowX: 'auto' }}
+          theme={theme.palette.mode === 'light' ? prismLightTheme : prismDarkTheme}
+        />
+      );
+    };
+    return memo(CodeBlk);
+  })(),
   hr: Divider,
   input: (() => {
     const Input = props => {
