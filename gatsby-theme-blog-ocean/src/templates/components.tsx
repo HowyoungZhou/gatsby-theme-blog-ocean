@@ -98,12 +98,21 @@ const components = {
       return (
         <CodeBlock
           {...props}
-          style={{ padding: 20, overflowX: 'auto' }}
+          style={{ padding: 20, overflowX: 'auto', borderRadius: 5 }}
           theme={theme.palette.mode === 'light' ? prismLightTheme : prismDarkTheme}
         />
       );
     };
     return memo(CodeBlk);
+  })(),
+  inlineCode: (() => {
+    const InlineCode = props => {
+      const theme = useTheme();
+      return (
+        <Typography {...props} component="code" style={{ color: theme.palette.secondary.main }} />
+      );
+    };
+    return memo(InlineCode);
   })(),
   hr: Divider,
   input: (() => {

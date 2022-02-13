@@ -19,7 +19,7 @@ export default function CodeBlock({ children, className, theme, style: outerStyl
       theme={theme}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre className={className} style={{ ...style, ...outerStyle }}>
+        <code className={className} style={{ display: 'block', ...style, ...outerStyle }}>
           {tokens.map((line, i) => (
             <div key={i} {...getLineProps({ line, key: i })}>
               {line.map((token, key) => (
@@ -27,7 +27,7 @@ export default function CodeBlock({ children, className, theme, style: outerStyl
               ))}
             </div>
           ))}
-        </pre>
+        </code>
       )}
     </Highlight>
   )
