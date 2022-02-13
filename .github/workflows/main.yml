@@ -1,0 +1,25 @@
+name: Publish to NPM
+
+on:
+  push:
+    branches:    
+      - 'main'
+    tags:        
+      - v**
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Publish to NPM
+        run: |
+          yarn config set npmAuthToken ${{ secrets.NPM_TOKEN }}
+          yarn config set npmAlwaysAuth true
+          yarn install
+          yarn workspace gatsby-theme-blog-ocean npm publish
