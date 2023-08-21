@@ -1,4 +1,10 @@
-module.exports = (options) => {
+import rehypeSlug from 'rehype-slug';
+import { dirname } from "path"
+import { fileURLToPath } from "url"
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+export default (options) => {
   const {
     postsPathTemplate = '/:lang?/posts/:segment+',
     languages = ['en'],
@@ -42,8 +48,7 @@ module.exports = (options) => {
             { resolve: `gatsby-remark-smartypants` },
           ],
           remarkPlugins: [
-            // We will migrate to rehype-slug when Gatsby supports ESM
-            require(`remark-slug`)
+            rehypeSlug,
           ],
         },
       },
@@ -51,7 +56,7 @@ module.exports = (options) => {
         resolve: `gatsby-source-filesystem`,
         options: {
           path: `${__dirname}/locales`,
-          name: 'builtin-locales'
+          name: localesSource
         }
       },
       {

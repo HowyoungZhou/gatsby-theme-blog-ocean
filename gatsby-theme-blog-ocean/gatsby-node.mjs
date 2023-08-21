@@ -1,13 +1,13 @@
-const { match, compile } = require("path-to-regexp");
-const path = require(`path`)
-const {
+import { match, compile } from "path-to-regexp";
+import path from "path";
+import {
   createFilePath,
   createRemoteFileNode,
-} = require(`gatsby-source-filesystem`)
-const { createContentDigest, slash } = require(`gatsby-core-utils`)
+} from "gatsby-source-filesystem";
+// import { slash } from "gatsby-core-utils";
 
 
-exports.pluginOptionsSchema = ({ Joi }) => {
+export const pluginOptionsSchema = ({ Joi }) => {
   return Joi.object({
     postsSource: Joi.string().default('posts').description('Name of the posts source passed to the `gatsby-source-filesystem` plugin'),
     postsFolderLayout: Joi.string().default('/:lang/:segment+').description('Layout of the posts folder'),
@@ -52,7 +52,8 @@ async function processRelativeImage(source, context, type) {
     (node) => node.internal && node.internal.type === `File`
   )
   if (!mdxFileNode) return;
-  const imagePath = slash(path.join(mdxFileNode.dir, source[type]))
+  // const imagePath = slash(path.join(mdxFileNode.dir, source[type]))
+  const imagePath = path.join(mdxFileNode.dir, source[type]);
 
   return await context.nodeModel.findOne({
     type: 'File',
@@ -64,7 +65,7 @@ async function processRelativeImage(source, context, type) {
   });
 }
 
-exports.createSchemaCustomization = ({ actions, schema }, themeOptions) => {
+export const createSchemaCustomization = ({ actions, schema }, themeOptions) => {
   const { excerptLength } = themeOptions;
   const { createTypes } = actions;
   createTypes(`interface BlogPost implements Node {
@@ -169,8 +170,8 @@ function validURL(str) {
 }
 
 // Create fields for post slugs and source
-exports.onCreateNode = async (
-  { node, actions, getNode, createNodeId, store, cache },
+export const onCreateNode = async (
+  { node, actions, getNode, createNodeId, store, cache,createContentDigest },
   themeOptions
 ) => {
   const { createNode, createParentChildLink } = actions;
@@ -268,9 +269,12 @@ exports.onCreateNode = async (
   createParentChildLink({ parent: node, child: getNode(mdxBlogPostId) });
 }
 
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+
 const PostTemplate = require.resolve(`./src/templates/post-query`);
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
+export const createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
   const result = await graphql(`

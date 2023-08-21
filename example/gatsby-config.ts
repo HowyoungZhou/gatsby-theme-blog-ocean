@@ -1,4 +1,9 @@
-module.exports = {
+import { dirname } from "path"
+import { fileURLToPath } from "url"
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+export default {
   siteMetadata: {
     author: 'Howyoung',
     social: [
@@ -16,21 +21,21 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/posts`,
+        path: `posts`,
         name: `posts`
       }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/locales`,
+        path: `locales`,
         name: `locales`
       }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/assets`,
+        path: `assets`,
         name: `assets`
       }
     },
