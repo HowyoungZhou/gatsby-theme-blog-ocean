@@ -27,7 +27,6 @@ export default (options) => {
       siteUrl,
     },
     plugins: [
-      `gatsby-plugin-react-helmet`,
       `gatsby-theme-material-ui`,
       `gatsby-plugin-image`,
       `gatsby-plugin-sharp`,
@@ -47,9 +46,11 @@ export default (options) => {
             { resolve: `gatsby-remark-copy-linked-files` },
             { resolve: `gatsby-remark-smartypants` },
           ],
-          remarkPlugins: [
-            rehypeSlug,
-          ],
+          mdxOptions: {
+            remarkPlugins: [
+              rehypeSlug,
+            ],
+          }
         },
       },
       {

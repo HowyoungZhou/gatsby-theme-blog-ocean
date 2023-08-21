@@ -1,7 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { useTheme } from "@mui/material";
-import { Helmet } from "gatsby-plugin-react-i18next";
 
 type MetaProps = JSX.IntrinsicElements["meta"];
 
@@ -70,11 +69,12 @@ export default function Seo({ description, meta = [], title }: SeoProps) {
     }
   ];
 
+  const metaProps = [...defaultMeta, ...meta];
   return (
-    <Helmet
-      title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
-      meta={defaultMeta.concat(meta)}
-    />
+    <>
+      <title>{defaultTitle ? `${title} | ${defaultTitle}` : title}</title>
+      {metaProps.map((props, i) => <meta key={i} {...props} />)}
+       {/* TODO: lang link */}
+    </>
   );
 }
