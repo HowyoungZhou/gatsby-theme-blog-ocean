@@ -4,7 +4,6 @@ import {
   createFilePath,
   createRemoteFileNode,
 } from "gatsby-source-filesystem";
-// import { slash } from "gatsby-core-utils";
 
 
 export const pluginOptionsSchema = ({ Joi }) => {
@@ -45,6 +44,15 @@ const mdxResolverPassthrough = (fieldName) => async (
   return result;
 }
 
+// from gatsby-core-utils, as it can not be used due to incompatibility with ESM
+function slash(path) {
+  const isExtendedLengthPath = /^\\\\\?\\/.test(path);
+  if (isExtendedLengthPath) {
+    return path;
+  }
+  return path.replace(/\\/g, `/`);
+}
+
 async function processRelativeImage(source, context, type) {
   // Image is a relative path - find a corresponding file
   const mdxFileNode = context.nodeModel.findRootNodeAncestor(
@@ -52,8 +60,7 @@ async function processRelativeImage(source, context, type) {
     (node) => node.internal && node.internal.type === `File`
   )
   if (!mdxFileNode) return;
-  // const imagePath = slash(path.join(mdxFileNode.dir, source[type]))
-  const imagePath = path.join(mdxFileNode.dir, source[type]);
+  const imagePath = slash(path.join(mdxFileNode.dir, source[type]));
 
   return await context.nodeModel.findOne({
     type: 'File',
@@ -283,6 +290,11 @@ export const createPages = async ({ graphql, actions, reporter }) => {
         nodes {
           id
           slug
+          parent {
+            internal {
+              contentFilePath
+            }
+          }
         }
       }
     }
@@ -300,10 +312,9 @@ export const createPages = async ({ graphql, actions, reporter }) => {
   posts.forEach((post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1];
     const next = index === 0 ? null : posts[index - 1];
-    const { slug } = post;
     createPage({
-      path: slug,
-      component: PostTemplate,
+      path: post.slug,
+      component: `${PostTemplate}?__contentFilePath=${post.parent.internal.contentFilePath}`,
       context: {
         id: post.id,
         previousId: previous ? previous.id : undefined,

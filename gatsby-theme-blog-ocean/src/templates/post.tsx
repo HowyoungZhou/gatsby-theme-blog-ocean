@@ -117,7 +117,7 @@ function TocTreeView({ toc, sx, onClick }: { toc: TocNode, sx?: SxProps<Theme>, 
   );
 }
 
-export default function Post({ data }) {
+export default function Post({ data, children }) {
   const theme = useTheme();
   const post = data.blogPost;
   const mobileMode = useMediaQuery(theme.breakpoints.down('sm'));
@@ -189,7 +189,7 @@ export default function Post({ data }) {
               }
             </Box>
             <MDXProvider components={components}>
-              <MDXRenderer>{post.body}</MDXRenderer>
+              {children}
             </MDXProvider>
           </Container>
         </Box>
