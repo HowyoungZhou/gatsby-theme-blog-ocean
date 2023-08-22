@@ -47,7 +47,7 @@ export default (options) => {
             { resolve: `gatsby-remark-smartypants` },
           ],
           mdxOptions: {
-            remarkPlugins: [
+            rehypePlugins: [
               rehypeSlug,
             ],
           }
@@ -57,7 +57,7 @@ export default (options) => {
         resolve: `gatsby-source-filesystem`,
         options: {
           path: `${__dirname}/locales`,
-          name: localesSource
+          name: `builtin-locales`,
         }
       },
       {
@@ -66,6 +66,7 @@ export default (options) => {
           localeJsonSourceName: localesSource, // name given to `gatsby-source-filesystem` plugin.
           languages,
           defaultLanguage,
+          redirect: false,
           // if you are using Helmet, you must include siteUrl, and make sure you add http:https
           siteUrl: siteUrl,
           // you can pass any i18next options
