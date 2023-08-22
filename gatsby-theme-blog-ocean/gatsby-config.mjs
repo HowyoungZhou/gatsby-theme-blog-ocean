@@ -141,16 +141,15 @@ export default (options) => {
                   date: post.date,
                   url: new URL(post.slug, siteUrl).href,
                   guid: post.id,
-                  custom_elements: [{ "content:encoded": post.html }]
+                  custom_elements: [{ "content:encoded": post.body }]
                 })),
               query: `
                 {
-                  allBlogPost(sort: { fields: [date, title], order: DESC }, limit: 1000) {
+                  allBlogPost(sort: [{date: DESC}, {title: ASC}], limit: 1000) {
                     nodes {
                       id
                       excerpt
                       body
-                      html
                       slug
                       title
                       date

@@ -79,7 +79,6 @@ export const createSchemaCustomization = ({ actions, schema }, themeOptions) => 
       id: ID!
       title: String!
       body: String!
-      html: String!
       slug: String!
       date: Date! @dateformat
       tags: [String]!
@@ -153,10 +152,6 @@ export const createSchemaCustomization = ({ actions, schema }, themeOptions) => 
         body: {
           type: `String!`,
           resolve: mdxResolverPassthrough(`body`),
-        },
-        html: {
-          type: `String!`,
-          resolve: mdxResolverPassthrough(`html`),
         },
       },
       interfaces: [`Node`, `BlogPost`],
