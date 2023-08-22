@@ -286,7 +286,7 @@ export const createPages = async ({ graphql, actions, reporter }) => {
 
   const result = await graphql(`
     {
-      allBlogPost(sort: { fields: [date, title], order: DESC }, limit: 1000) {
+      allBlogPost(sort: [{date: DESC}, {title: ASC}], limit: 1000) {
         nodes {
           id
           slug
