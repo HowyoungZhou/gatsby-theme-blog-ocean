@@ -56,7 +56,10 @@
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-i18next": "^13.1.2",
-    "rehype-slug": "^5.1.0"
+    "rehype-mathjax": "^4.0.3",
+    "rehype-slug": "^5.1.0",
+    "remark-gfm": "^3.0.1",
+    "remark-math": "^5.1.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.22.10",

@@ -1,4 +1,8 @@
 import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+// import rehypeKatex from 'rehype-katex';
+import rehypeMathJax from 'rehype-mathjax';
 import { dirname } from "path"
 import { fileURLToPath } from "url"
 
@@ -47,8 +51,13 @@ export default (options) => {
             { resolve: `gatsby-remark-smartypants` },
           ],
           mdxOptions: {
+            remarkPlugins: [
+              remarkGfm,
+              remarkMath,
+            ],
             rehypePlugins: [
               rehypeSlug,
+              rehypeMathJax,
             ],
           }
         },
