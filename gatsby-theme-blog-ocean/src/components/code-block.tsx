@@ -1,4 +1,4 @@
-import Highlight, { defaultProps, Language, PrismTheme } from 'prism-react-renderer';
+import {Highlight, Language, PrismTheme } from 'prism-react-renderer';
 import React from 'react';
 
 export interface CodeBlockProps {
@@ -13,7 +13,6 @@ export default function CodeBlock({ children, className, theme, style: outerStyl
 
   return (
     <Highlight
-      {...defaultProps}
       code={children.trim()}
       language={lang as Language}
       theme={theme}
