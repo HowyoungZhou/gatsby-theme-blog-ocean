@@ -73,6 +73,7 @@ export default function Seo({ description, meta = [], title }: SeoProps) {
   return (
     <>
       <title>{defaultTitle ? `${title} | ${defaultTitle}` : title}</title>
+      <meta name="viewport" content="initial-scale=1, width=device-width" />
       {metaProps.map((props, i) => <meta key={i} {...props} />)}
        {/* TODO: lang link */}
     </>

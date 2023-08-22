@@ -5,7 +5,7 @@ import MaterialUi from '@iconify-icons/logos/material-ui';
 import GatsbyIcon from '@iconify-icons/logos/gatsby';
 import redHeart from '@iconify-icons/emojione/red-heart';
 import { Trans } from 'gatsby-plugin-react-i18next';
-import { Link } from 'gatsby-theme-material-ui';
+import { Link } from 'gatsby-material-ui-components';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Paper } from '@mui/material';
 

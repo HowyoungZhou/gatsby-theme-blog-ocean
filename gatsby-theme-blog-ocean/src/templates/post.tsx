@@ -13,7 +13,6 @@ import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { Link } from "gatsby-material-ui-components";
 import { GatsbyImage } from "gatsby-plugin-image";
-import { MDXRenderer } from "gatsby-plugin-mdx";
 import { Trans } from "gatsby-plugin-react-i18next";
 import React from "react";
 import Footer from "../components/footer";

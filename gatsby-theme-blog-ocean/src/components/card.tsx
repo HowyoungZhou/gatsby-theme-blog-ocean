@@ -3,7 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea } from 'gatsby-theme-material-ui';
+import { CardActionArea } from 'gatsby-material-ui-components';
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
 
 interface Image {

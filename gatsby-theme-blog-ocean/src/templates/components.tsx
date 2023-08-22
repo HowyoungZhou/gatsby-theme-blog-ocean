@@ -8,7 +8,7 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
-import { Link } from "gatsby-theme-material-ui";
+import { Link } from "gatsby-material-ui-components";
 import {themes} from 'prism-react-renderer';
 import React, { memo } from 'react';
 import CodeBlock from '../components/code-block';

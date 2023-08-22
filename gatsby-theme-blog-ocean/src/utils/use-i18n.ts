@@ -8,7 +8,7 @@ export default function useI18n(...args) {
     generateDefaultLanguagePage,
   } = i18next;
 
-  function getLanguagePath(language: string) {
+  function getLanguagePath(language?: string) {
     const lang = language || currentLang;
     return (generateDefaultLanguagePage || lang !== defaultLanguage)
       ? `/${lang}`

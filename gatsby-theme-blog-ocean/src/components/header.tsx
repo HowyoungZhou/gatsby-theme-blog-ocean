@@ -18,7 +18,7 @@ import ToolTip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Trans, useTranslation } from 'gatsby-plugin-react-i18next';
-import { Button, IconButton, Link } from 'gatsby-theme-material-ui';
+import { Button, IconButton, Link } from 'gatsby-material-ui-components';
 import React from 'react';
 import useI18n from '../utils/use-i18n';
 import { ThemeMode, useMode } from './theme-context';

@@ -1,7 +1,6 @@
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
-// import rehypeKatex from 'rehype-katex';
 import rehypeMathJax from 'rehype-mathjax';
 import { dirname } from "path"
 import { fileURLToPath } from "url"
@@ -31,7 +30,20 @@ export default (options) => {
       siteUrl,
     },
     plugins: [
-      `gatsby-theme-material-ui`,
+      `gatsby-plugin-material-ui`,
+      {
+        resolve: `gatsby-plugin-webfonts`,
+        options: {
+          fonts: {
+            google: [
+              {
+                family: `Roboto`,
+                variants: [`300`, `400`, `500`],
+              },
+            ],
+          },
+        },
+      },
       `gatsby-plugin-image`,
       `gatsby-plugin-sharp`,
       `gatsby-transformer-sharp`,
