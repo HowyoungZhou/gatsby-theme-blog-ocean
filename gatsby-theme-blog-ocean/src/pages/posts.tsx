@@ -98,18 +98,12 @@ function PostsList({ posts }: { posts: Post[] }) {
   );
 }
 
-export const Head = () => {
-  const { t } = useTranslation();
-  return (
-    <Seo title={t("Posts")} />
-  );
-}
-
 export default function Posts({ data }: { data: Data }) {
   const { t } = useTranslation();
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', }}>
+      <Seo title={t("Posts")} />
       <AppBar title={t("Posts")} />
 
       <Container sx={{ display: { xs: 'none', sm: 'block' }, flex: 1 }}>

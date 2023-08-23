@@ -29,18 +29,13 @@ interface Data {
   }
 };
 
-export const Head = () => {
-  const { t } = useTranslation();
-  return (
-    <Seo title={t("Home")} />
-  );
-}
-
 export default function Index({ data }: { data: Data }) {
   const { t } = useTranslation();
 
   return (
     <>
+      <Seo title={t("Home")} />
+
       <Banner>
         <Typography variant="h3">
           {t('banner.greeting', "Hi! I'm {{ author }}.", { author: data.site.siteMetadata.author })}

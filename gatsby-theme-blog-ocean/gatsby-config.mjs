@@ -30,6 +30,7 @@ export default (options) => {
       siteUrl,
     },
     plugins: [
+      `gatsby-plugin-react-helmet`, // deprecate after Head API becomes usable
       `gatsby-plugin-material-ui`,
       {
         resolve: `gatsby-plugin-webfonts`,
