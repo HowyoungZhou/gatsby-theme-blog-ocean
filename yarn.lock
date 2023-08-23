@@ -8675,7 +8675,7 @@ __metadata:
   dependencies:
     gatsby: ^5.11.0
     gatsby-source-filesystem: ^5.11.0
-    gatsby-theme-blog-ocean: 0.1.5
+    gatsby-theme-blog-ocean: 1.0.0
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
@@ -9874,7 +9874,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"gatsby-theme-blog-ocean@0.1.5, gatsby-theme-blog-ocean@workspace:gatsby-theme-blog-ocean":
+"gatsby-theme-blog-ocean@1.0.0, gatsby-theme-blog-ocean@workspace:gatsby-theme-blog-ocean":
   version: 0.0.0-use.local
   resolution: "gatsby-theme-blog-ocean@workspace:gatsby-theme-blog-ocean"
   dependencies:
