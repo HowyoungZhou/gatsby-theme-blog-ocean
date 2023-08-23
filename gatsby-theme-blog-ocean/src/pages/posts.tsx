@@ -120,7 +120,7 @@ export default function Posts({ data }: { data: Data }) {
 
 export const query = graphql`
   query PostsQuery($language: String!) {
-    allBlogPost(sort: { fields: [date, title], order: DESC }, limit: 1000) {
+    allBlogPost(sort: [{date: DESC}, {title: ASC}], limit: 1000) {
       nodes {
         id
         excerpt

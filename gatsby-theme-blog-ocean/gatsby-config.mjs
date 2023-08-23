@@ -1,4 +1,13 @@
-module.exports = (options) => {
+import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import rehypeMathJax from 'rehype-mathjax';
+import { dirname } from "path"
+import { fileURLToPath } from "url"
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+export default (options) => {
   const {
     postsPathTemplate = '/:lang?/posts/:segment+',
     languages = ['en'],
@@ -21,8 +30,21 @@ module.exports = (options) => {
       siteUrl,
     },
     plugins: [
-      `gatsby-plugin-react-helmet`,
-      `gatsby-theme-material-ui`,
+      `gatsby-plugin-react-helmet`, // deprecate after Head API becomes usable
+      `gatsby-plugin-material-ui`,
+      {
+        resolve: `gatsby-plugin-webfonts`,
+        options: {
+          fonts: {
+            google: [
+              {
+                family: `Roboto`,
+                variants: [`300`, `400`, `500`],
+              },
+            ],
+          },
+        },
+      },
       `gatsby-plugin-image`,
       `gatsby-plugin-sharp`,
       `gatsby-transformer-sharp`,
@@ -41,17 +63,23 @@ module.exports = (options) => {
             { resolve: `gatsby-remark-copy-linked-files` },
             { resolve: `gatsby-remark-smartypants` },
           ],
-          remarkPlugins: [
-            // We will migrate to rehype-slug when Gatsby supports ESM
-            require(`remark-slug`)
-          ],
+          mdxOptions: {
+            remarkPlugins: [
+              remarkGfm,
+              remarkMath,
+            ],
+            rehypePlugins: [
+              rehypeSlug,
+              rehypeMathJax,
+            ],
+          }
         },
       },
       {
         resolve: `gatsby-source-filesystem`,
         options: {
           path: `${__dirname}/locales`,
-          name: 'builtin-locales'
+          name: `builtin-locales`,
         }
       },
       {
@@ -60,6 +88,7 @@ module.exports = (options) => {
           localeJsonSourceName: localesSource, // name given to `gatsby-source-filesystem` plugin.
           languages,
           defaultLanguage,
+          redirect: false,
           // if you are using Helmet, you must include siteUrl, and make sure you add http:https
           siteUrl: siteUrl,
           // you can pass any i18next options
@@ -125,16 +154,15 @@ module.exports = (options) => {
                   date: post.date,
                   url: new URL(post.slug, siteUrl).href,
                   guid: post.id,
-                  custom_elements: [{ "content:encoded": post.html }]
+                  custom_elements: [{ "content:encoded": post.body }]
                 })),
               query: `
                 {
-                  allBlogPost(sort: { fields: [date, title], order: DESC }, limit: 1000) {
+                  allBlogPost(sort: [{date: DESC}, {title: ASC}], limit: 1000) {
                     nodes {
                       id
                       excerpt
                       body
-                      html
                       slug
                       title
                       date

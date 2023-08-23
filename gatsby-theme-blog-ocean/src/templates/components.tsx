@@ -8,9 +8,8 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
-import { Link } from "gatsby-theme-material-ui";
-import prismDarkTheme from 'prism-react-renderer/themes/dracula';
-import prismLightTheme from 'prism-react-renderer/themes/github';
+import { Link } from "gatsby-material-ui-components";
+import {themes} from 'prism-react-renderer';
 import React, { memo } from 'react';
 import CodeBlock from '../components/code-block';
 
@@ -99,7 +98,7 @@ const components = {
         <CodeBlock
           {...props}
           style={{ padding: 20, overflowX: 'auto', borderRadius: 5 }}
-          theme={theme.palette.mode === 'light' ? prismLightTheme : prismDarkTheme}
+          theme={theme.palette.mode === 'light' ? themes.github : themes.dracula}
         />
       );
     };

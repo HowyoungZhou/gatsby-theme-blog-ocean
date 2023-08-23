@@ -42,9 +42,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <MuiThemeProvider theme={theme}>
-      <ThemeContext.Provider value={[mode, updateMode]}>{children}</ThemeContext.Provider>
-    </MuiThemeProvider>
+    <ThemeContext.Provider value={[mode, updateMode]}>
+      <MuiThemeProvider theme={theme}>
+        {children}
+      </MuiThemeProvider>
+    </ThemeContext.Provider>
   );
 }
 

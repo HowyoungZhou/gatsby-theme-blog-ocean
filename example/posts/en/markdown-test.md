@@ -160,3 +160,19 @@ Incididunt in culpa cupidatat mollit cillum qui proident sit. In cillum aliquip 
 [![Manny Pacquiao](https://img.youtube.com/vi/s6bCmZmy9aQ/0.jpg)](https://youtu.be/s6bCmZmy9aQ)
 
 Reprehenderit non eu quis in ad elit esse qui aute id incididunt dolore cillum. Esse laboris consequat dolor anim exercitation tempor aliqua deserunt velit magna laboris. Culpa culpa minim duis amet mollit do quis amet commodo nulla irure.
+
+# Math
+
+## Inline math
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, $\alpha = \beta$ quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, $\gamma = \delta$ sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+## Block math
+
+$$
+\begin{aligned}
+\dot{x} & = \sigma(y-x) \\
+\dot{y} & = \rho x - y - xz \\
+\dot{z} & = -\beta z + x
+\end{aligned}
+$$

@@ -73,5 +73,8 @@ export const query = graphql`
         }
       }
     }
+    theme: sitePlugin(name: {eq: "gatsby-theme-blog-ocean"}) {
+      pluginOptions
+    }
   }
 `

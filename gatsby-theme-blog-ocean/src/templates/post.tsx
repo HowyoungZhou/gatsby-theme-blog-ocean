@@ -13,13 +13,14 @@ import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { Link } from "gatsby-material-ui-components";
 import { GatsbyImage } from "gatsby-plugin-image";
-import { MDXRenderer } from "gatsby-plugin-mdx";
 import { Trans } from "gatsby-plugin-react-i18next";
 import React from "react";
 import Footer from "../components/footer";
 import AppBar from "../components/header";
 import Seo from "../components/seo";
 import components from "./components";
+import Giscus, { GiscusProps } from '@giscus/react';
+import useI18n from "../utils/use-i18n";
 
 interface TocNode {
   title?: string;
@@ -117,9 +118,45 @@ function TocTreeView({ toc, sx, onClick }: { toc: TocNode, sx?: SxProps<Theme>, 
   );
 }
 
-export default function Post({ data }) {
+function fuzzyMatchLang(lang: string, langs: string[]) {
+  const locale = new Intl.Locale(lang);
+  const locales = langs.map(l => new Intl.Locale(l));
+
+  const map = new Map(
+    [
+      ...langs.map(l => [l, l]),
+      ...locales.map((l, i) => [l.baseName, langs[i]]),
+      ...locales.map((l, i) => [l.language, langs[i]]),
+    ]
+  );
+  return map.get(lang) || map.get(locale.baseName) || map.get(locale.language);
+}
+
+function Comments({ ...props }: GiscusProps) {
+  const { language, defaultLanguage } = useI18n();
+  const theme = useTheme();
+
+  const langs = ['ar', 'ca', 'de', 'en', 'eo', 'es', 'fa', 'fr', 'he', 'id', 'it', 'ja', 'ko', 'nl', 'pl', 'pt', 'ro', 'ru', 'th', 'tr', 'uk', 'vi', 'zh-CN', 'zh-TW'];
+  const lang = React.useMemo(() => fuzzyMatchLang(language, langs) || fuzzyMatchLang(defaultLanguage, langs) || 'en', [language]);
+
+  return (
+    <Giscus
+      id="comments"
+      reactionsEnabled="1"
+      emitMetadata="1"
+      inputPosition="top"
+      theme={theme.palette.mode === 'dark' ? 'dark' : 'light'}
+      lang={lang}
+      loading="lazy"
+      {...props}
+    />
+  );
+}
+
+export default function Post({ data, children }) {
   const theme = useTheme();
   const post = data.blogPost;
+  const giscusOptions = data.theme.pluginOptions.giscusOptions;
   const mobileMode = useMediaQuery(theme.breakpoints.down('sm'));
   const [open, setOpen] = React.useState(false);
   React.useEffect(() => { setOpen(!mobileMode) }, [mobileMode])
@@ -174,25 +211,33 @@ export default function Post({ data }) {
             </IconButton>
           )}
         />
-        <Box component="main" sx={{ flex: 1 }}>
-          <Container sx={{ overflowX: "auto" }}>
-            <Box sx={{ my: 3 }}>
-              {
-                post.image && (
-                  <GatsbyImage
-                    objectFit="cover"
-                    style={{ width: '100%', height: '100%' }}
-                    image={post.image.childImageSharp.gatsbyImageData}
-                    alt={post.imageAlt || ""}
-                  />
-                )
-              }
-            </Box>
+
+        <Container component="main" sx={{ overflowX: "auto", flex: 1, display: "flex", flexDirection: "column" }}>
+          {
+            post.image && (
+              <Box sx={{ my: 3 }}>
+                <GatsbyImage
+                  objectFit="cover"
+                  style={{ width: '100%', height: '100%' }}
+                  image={post.image.childImageSharp.gatsbyImageData}
+                  alt={post.imageAlt || ""}
+                />
+              </Box>
+            )
+          }
+          <Box sx={{ flex: 1 }}>
             <MDXProvider components={components}>
-              <MDXRenderer>{post.body}</MDXRenderer>
+              {children}
             </MDXProvider>
-          </Container>
-        </Box>
+          </Box>
+          {
+            giscusOptions.repo && (
+              <Box sx={{ my: 3 }}>
+                <Comments {...giscusOptions} />
+              </Box>
+            )
+          }
+        </Container>
         <Footer />
       </Main>
     </>

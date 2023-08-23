@@ -18,7 +18,7 @@ import ToolTip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Trans, useTranslation } from 'gatsby-plugin-react-i18next';
-import { Button, IconButton, Link } from 'gatsby-theme-material-ui';
+import { Button, IconButton, Link } from 'gatsby-material-ui-components';
 import React from 'react';
 import useI18n from '../utils/use-i18n';
 import { ThemeMode, useMode } from './theme-context';
@@ -46,7 +46,7 @@ function languageName(lang: string) {
   const { language } = useI18n();
   const origName = new Intl.DisplayNames([lang], { type: 'language' }).of(lang);
   const name = new Intl.DisplayNames([language], { type: 'language' }).of(lang);
-  return origName == name ? origName : `${origName} (${name})`
+  return origName == name ? origName : `${origName} | ${name}`
 }
 
 function rssPath() {
@@ -89,7 +89,7 @@ function ThemeIconButton() {
 function LanguageIconButton() {
   const { t } = useTranslation();
   const [anchorEl, setAnchorEl] = React.useState<Element>(null);
-  const { languages, originalPath, getLink } = useI18n();
+  const { language, languages, originalPath, getLink } = useI18n();
 
   return (
     <>
@@ -118,7 +118,7 @@ function LanguageIconButton() {
                 color="inherit"
                 underline="none"
               >
-                <MenuItem dense >{languageName(lng)}</MenuItem>
+                <MenuItem dense selected={lng === language}>{languageName(lng)}</MenuItem>
               </Link>
             )
           )

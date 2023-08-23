@@ -4,7 +4,7 @@
 
 <h1 align="center">Gatsby Theme Blog Ocean</h1>
 
-Blog Ocean is a Gatsby theme for personal homepages and blogs. It features the material design, built-in [MDX](https://mdxjs.com/) support, dark mode, SEO-friendly localization, and more! You can have a look at the live demo at [www.howyoung.dev](https://www.howyoung.dev).
+Blog Ocean is a Gatsby theme for personal homepages and blogs. It features the material design, built-in [MDX](https://mdxjs.com/) support, dark mode, SEO-friendly localization, comment system powered by [Giscus](https://giscus.app/) and more! You can have a look at the live demo at [www.howyoung.dev](https://www.howyoung.dev).
 
 The theme is still under development and more thrilling features will be added to it soon. Meanwhile, it is designed with extendibility in mind, allowing you to customize each part of the website as you wish. Please refer to the section [Customization](#customization) for more details.
 
@@ -44,7 +44,7 @@ module.exports = {
     {
       resolve: `gatsby-theme-blog-ocean`,
       options: {
-        languages: ['en', 'zh']
+        languages: ['en', 'zh-CH']
         // ...
       }
     }
@@ -72,6 +72,7 @@ For more options available, please refer to the section [Available options](avai
 |rssPath|string|`'/rss.xml'`|Path for the RSS feed file|
 |rssTitle|string|Same as `title`|Title of the RSS feed|
 |manifest|object|`{}`|Custom PWA manifest|
+|giscusOptions|object|`{}`|Custom options for [Giscus](https://giscus.app/)|
 
 ## Examples of usage
 

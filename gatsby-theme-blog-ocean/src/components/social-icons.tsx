@@ -6,7 +6,7 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import ToolTip from '@mui/material/Tooltip';
-import { IconButton } from 'gatsby-theme-material-ui';
+import { IconButton } from 'gatsby-material-ui-components';
 import * as React from 'react';
 import { useTranslation } from "react-i18next";
 import useI18n from '../utils/use-i18n';

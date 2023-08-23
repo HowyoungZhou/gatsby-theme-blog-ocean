@@ -35,6 +35,7 @@ export default function Index({ data }: { data: Data }) {
   return (
     <>
       <Seo title={t("Home")} />
+
       <Banner>
         <Typography variant="h3">
           {t('banner.greeting', "Hi! I'm {{ author }}.", { author: data.site.siteMetadata.author })}
@@ -96,7 +97,7 @@ export const query = graphql`
         }
       }
     }
-    allBlogPost(sort: { fields: [date, title], order: DESC }, limit: 1000) {
+    allBlogPost(sort: [{date: DESC}, {title: ASC}], limit: 1000) {
       nodes {
         id
         excerpt

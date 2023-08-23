@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   siteMetadata: {
     author: 'Howyoung',
     social: [
@@ -16,21 +16,21 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/posts`,
+        path: `posts`,
         name: `posts`
       }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/locales`,
+        path: `locales`,
         name: `locales`
       }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/assets`,
+        path: `assets`,
         name: `assets`
       }
     },
@@ -40,8 +40,16 @@ module.exports = {
         title: 'Ocean Blog',
         description: 'Here is the description of the site.',
         siteUrl: 'https://www.howyoung.dev',
-        languages: ['en', 'zh'],
-        localesSource: 'locales'
+        languages: ['en', 'zh-CN'],
+        localesSource: 'locales',
+        giscusOptions: {
+          repo: "giscus/giscus-component",
+          repoId: "MDEwOlJlcG9zaXRvcnkzOTEzMTMwMjA=",
+          category: "Announcements",
+          categoryId: "DIC_kwDOF1L2fM4B-hVS",
+          mapping: "specific",
+          term: "Welcome to @giscus/react component!",
+        }
       }
     }
   ],
