@@ -40,7 +40,7 @@ export default {
         title: 'Ocean Blog',
         description: 'Here is the description of the site.',
         siteUrl: 'https://www.howyoung.dev',
-        languages: ['en', 'zh-cn'],
+        languages: ['en', 'zh-CN'],
         localesSource: 'locales',
         giscusOptions: {
           repo: "giscus/giscus-component",
