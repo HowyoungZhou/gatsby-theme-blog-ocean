@@ -19,6 +19,8 @@ import Footer from "../components/footer";
 import AppBar from "../components/header";
 import Seo from "../components/seo";
 import components from "./components";
+import Giscus, { GiscusProps } from '@giscus/react';
+import useI18n from "../utils/use-i18n";
 
 interface TocNode {
   title?: string;
@@ -116,9 +118,28 @@ function TocTreeView({ toc, sx, onClick }: { toc: TocNode, sx?: SxProps<Theme>, 
   );
 }
 
+function Comments({ ...props }: GiscusProps) {
+  const { language } = useI18n();
+  const theme = useTheme();
+
+  return (
+    <Giscus
+      id="comments"
+      reactionsEnabled="1"
+      emitMetadata="1"
+      inputPosition="top"
+      theme={theme.palette.mode === 'dark' ? 'dark' : 'light'}
+      lang={language}
+      loading="lazy"
+      {...props}
+    />
+  );
+}
+
 export default function Post({ data, children }) {
   const theme = useTheme();
   const post = data.blogPost;
+  const giscusOptions = data.theme.pluginOptions.giscusOptions;
   const mobileMode = useMediaQuery(theme.breakpoints.down('sm'));
   const [open, setOpen] = React.useState(false);
   React.useEffect(() => { setOpen(!mobileMode) }, [mobileMode])
@@ -173,25 +194,33 @@ export default function Post({ data, children }) {
             </IconButton>
           )}
         />
-        <Box component="main" sx={{ flex: 1 }}>
-          <Container sx={{ overflowX: "auto" }}>
-            <Box sx={{ my: 3 }}>
-              {
-                post.image && (
-                  <GatsbyImage
-                    objectFit="cover"
-                    style={{ width: '100%', height: '100%' }}
-                    image={post.image.childImageSharp.gatsbyImageData}
-                    alt={post.imageAlt || ""}
-                  />
-                )
-              }
-            </Box>
+
+        <Container component="main" sx={{ overflowX: "auto", flex: 1, display: "flex", flexDirection: "column" }}>
+          <Box sx={{ my: 3 }}>
+            {
+              post.image && (
+                <GatsbyImage
+                  objectFit="cover"
+                  style={{ width: '100%', height: '100%' }}
+                  image={post.image.childImageSharp.gatsbyImageData}
+                  alt={post.imageAlt || ""}
+                />
+              )
+            }
+          </Box>
+          <Box sx={{ flex: 1 }}>
             <MDXProvider components={components}>
               {children}
             </MDXProvider>
-          </Container>
-        </Box>
+          </Box>
+          {
+            giscusOptions.repo && (
+              <Box sx={{ my: 3 }}>
+                <Comments {...giscusOptions} />
+              </Box>
+            )
+          }
+        </Container>
         <Footer />
       </Main>
     </>

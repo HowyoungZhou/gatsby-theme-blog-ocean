@@ -40,8 +40,16 @@ export default {
         title: 'Ocean Blog',
         description: 'Here is the description of the site.',
         siteUrl: 'https://www.howyoung.dev',
-        languages: ['en', 'zh'],
-        localesSource: 'locales'
+        languages: ['en', 'zh-cn'],
+        localesSource: 'locales',
+        giscusOptions: {
+          repo: "giscus/giscus-component",
+          repoId: "MDEwOlJlcG9zaXRvcnkzOTEzMTMwMjA=",
+          category: "Announcements",
+          categoryId: "DIC_kwDOF1L2fM4B-hVS",
+          mapping: "specific",
+          term: "Welcome to @giscus/react component!",
+        }
       }
     }
   ],
