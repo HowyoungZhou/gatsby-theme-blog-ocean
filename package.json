@@ -17,5 +17,5 @@
     "serve": "yarn workspace example serve",
     "extract": "yarn workspace gatsby-theme-blog-ocean extract"
   },
-  "packageManager": "yarn@3.2.1"
+  "packageManager": "yarn@3.6.2"
 }

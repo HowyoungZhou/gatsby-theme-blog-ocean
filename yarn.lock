@@ -4476,10 +4476,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.5.1":
-  version: 20.5.1
-  resolution: "@types/node@npm:20.5.1"
-  checksum: 3dbe611cd67afa987102c8558ee70f848949c5dcfee5f60abc073e55c0d7b048e391bf06bb1e0dc052cb7210ca97136ac496cbaf6e89123c989de6bd125fde82
+"@types/node@npm:^20.5.3":
+  version: 20.5.3
+  resolution: "@types/node@npm:20.5.3"
+  checksum: fe67a0fd7402218bdf91523a2b1c2e41d619f7294b1a471e0a778b8bc7bb3fcf291aed12041bcbe9622d50a3d1295a9adea0e7e19bb9386a246bf66071404721
   languageName: node
   linkType: hard
 
@@ -4574,7 +4574,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:>=16, @types/react@npm:^18.2.20":
+"@types/react@npm:>=16":
   version: 18.2.20
   resolution: "@types/react@npm:18.2.20"
   dependencies:
@@ -4582,6 +4582,17 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: 30f699c60e5e4bfef273ce64d320651cdd60f5c6a08361c6c7eca8cebcccda1ac953d2ee57c9f321b5ae87f8a62c72b6d35ca42df0e261d337849952daab2141
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^18.2.21":
+  version: 18.2.21
+  resolution: "@types/react@npm:18.2.21"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: ffed203bfe7aad772b8286f7953305c9181ac3a8f27d3f5400fbbc2a8e27ca8e5bbff818ee014f39ca0d19d2b3bb154e5bdbec7e232c6f80b59069375aa78349
   languageName: node
   linkType: hard
 
@@ -8808,7 +8819,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fastq@npm:^1.15.0":
+"fastq@npm:^1.13.0, fastq@npm:^1.15.0":
   version: 1.15.0
   resolution: "fastq@npm:1.15.0"
   dependencies:
@@ -9229,7 +9240,7 @@ __metadata:
 
 "fsevents@patch:fsevents@~2.3.2#~builtin<compat/fsevents>":
   version: 2.3.2
-  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=18f3a7"
+  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=df0bf1"
   dependencies:
     node-gyp: latest
   conditions: os=darwin
@@ -9844,8 +9855,8 @@ __metadata:
     "@mui/icons-material": ^5.14.3
     "@mui/lab": ^5.0.0-alpha.140
     "@mui/material": ^5.14.5
-    "@types/node": ^20.5.1
-    "@types/react": ^18.2.20
+    "@types/node": ^20.5.3
+    "@types/react": ^18.2.21
     "@types/react-dom": ^18.2.7
     "@types/react-helmet": ^6.1.6
     babel-plugin-i18next-extract: ^0.9.0
@@ -9867,13 +9878,13 @@ __metadata:
     gatsby-remark-smartypants: ^6.11.0
     gatsby-source-filesystem: ^5.11.0
     gatsby-transformer-sharp: ^5.11.0
-    i18next: ^23.4.4
+    i18next: ^23.4.5
     path-to-regexp: ^6.2.1
     prism-react-renderer: ^2.0.6
     react: ^18.2.0
     react-dom: ^18.2.0
     react-helmet: ^6.1.0
-    react-i18next: ^13.1.2
+    react-i18next: ^13.2.0
     rehype-mathjax: ^4.0.3
     rehype-slug: ^5.1.0
     remark-gfm: ^3.0.1
@@ -10931,12 +10942,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:^23.4.4":
-  version: 23.4.4
-  resolution: "i18next@npm:23.4.4"
+"i18next@npm:^23.4.5":
+  version: 23.4.5
+  resolution: "i18next@npm:23.4.5"
   dependencies:
     "@babel/runtime": ^7.22.5
-  checksum: faa968dcba328528231e3cd140d5a0f4b9b472b75874b7cbf8415e2dbff48397f1cdcc36a739ea6915f6970c367fdd7f985f120e63e1c30a839c53e366d851fd
+  checksum: b39a1edc19fc6fb34df4fd95581e2b86dd5d8c8345e3409a3366df606a72b62f25ee31a82fb9b0e22161cd856408989c91b74ee737b0cce00d547e6d371a14f5
   languageName: node
   linkType: hard
 
@@ -15952,9 +15963,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-i18next@npm:^13.1.2":
-  version: 13.1.2
-  resolution: "react-i18next@npm:13.1.2"
+"react-i18next@npm:^13.2.0":
+  version: 13.2.0
+  resolution: "react-i18next@npm:13.2.0"
   dependencies:
     "@babel/runtime": ^7.22.5
     html-parse-stringify: ^3.0.1
@@ -15966,7 +15977,7 @@ __metadata:
       optional: true
     react-native:
       optional: true
-  checksum: 105a17fe24a554af2fe8e44fefb279e0a044197aafaa8a46a046f655db2fdf094c68a70e0a6b23ed818c68a622c80f09f6cf2d94373a7ebe55bfcd993168a811
+  checksum: 6f7e375b22481dbd1b8c2498505f5a2309263a228bdc3dcd4cbc2e2f7b8d3945397a2560ffab87337341e14fb919a804d20189dcf0f651de8d006fd550830aea
   languageName: node
   linkType: hard
 
@@ -16542,7 +16553,7 @@ __metadata:
 
 "resolve@patch:resolve@^1.10.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.4#~builtin<compat/resolve>":
   version: 1.22.4
-  resolution: "resolve@patch:resolve@npm%3A1.22.4#~builtin<compat/resolve>::version=1.22.4&hash=07638b"
+  resolution: "resolve@patch:resolve@npm%3A1.22.4#~builtin<compat/resolve>::version=1.22.4&hash=c3c19d"
   dependencies:
     is-core-module: ^2.13.0
     path-parse: ^1.0.7
@@ -16555,7 +16566,7 @@ __metadata:
 
 "resolve@patch:resolve@^1.14.2#~builtin<compat/resolve>":
   version: 1.21.0
-  resolution: "resolve@patch:resolve@npm%3A1.21.0#~builtin<compat/resolve>::version=1.21.0&hash=07638b"
+  resolution: "resolve@patch:resolve@npm%3A1.21.0#~builtin<compat/resolve>::version=1.21.0&hash=c3c19d"
   dependencies:
     is-core-module: ^2.8.0
     path-parse: ^1.0.7
@@ -16568,7 +16579,7 @@ __metadata:
 
 "resolve@patch:resolve@^1.19.0#~builtin<compat/resolve>":
   version: 1.22.0
-  resolution: "resolve@patch:resolve@npm%3A1.22.0#~builtin<compat/resolve>::version=1.22.0&hash=07638b"
+  resolution: "resolve@patch:resolve@npm%3A1.22.0#~builtin<compat/resolve>::version=1.22.0&hash=c3c19d"
   dependencies:
     is-core-module: ^2.8.1
     path-parse: ^1.0.7
@@ -16581,7 +16592,7 @@ __metadata:
 
 "resolve@patch:resolve@^2.0.0-next.4#~builtin<compat/resolve>":
   version: 2.0.0-next.4
-  resolution: "resolve@patch:resolve@npm%3A2.0.0-next.4#~builtin<compat/resolve>::version=2.0.0-next.4&hash=07638b"
+  resolution: "resolve@patch:resolve@npm%3A2.0.0-next.4#~builtin<compat/resolve>::version=2.0.0-next.4&hash=c3c19d"
   dependencies:
     is-core-module: ^2.9.0
     path-parse: ^1.0.7
@@ -18305,11 +18316,11 @@ __metadata:
 
 "typescript@patch:typescript@^5.1.6#~builtin<compat/typescript>":
   version: 5.1.6
-  resolution: "typescript@patch:typescript@npm%3A5.1.6#~builtin<compat/typescript>::version=5.1.6&hash=7ad353"
+  resolution: "typescript@patch:typescript@npm%3A5.1.6#~builtin<compat/typescript>::version=5.1.6&hash=5da071"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 21e88b0a0c0226f9cb9fd25b9626fb05b4c0f3fddac521844a13e1f30beb8f14e90bd409a9ac43c812c5946d714d6e0dee12d5d02dfc1c562c5aacfa1f49b606
+  checksum: f53bfe97f7c8b2b6d23cf572750d4e7d1e0c5fff1c36d859d0ec84556a827b8785077bc27676bf7e71fae538e517c3ecc0f37e7f593be913d884805d931bc8be
   languageName: node
   linkType: hard
 
