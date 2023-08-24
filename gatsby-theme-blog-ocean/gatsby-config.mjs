@@ -57,7 +57,8 @@ export default (options) => {
               resolve: `gatsby-remark-images`,
               options: {
                 maxWidth: maxImageWidth,
-                linkImagesToOriginal: false,
+                linkImagesToOriginal: true,
+                showCaptions: true,
               },
             },
             { resolve: `gatsby-remark-copy-linked-files` },
