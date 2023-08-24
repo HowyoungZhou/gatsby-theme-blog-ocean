@@ -1,4 +1,4 @@
-import { useTheme } from '@mui/material';
+import { styled, useTheme } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
@@ -12,6 +12,8 @@ import { Link } from "gatsby-material-ui-components";
 import { themes } from 'prism-react-renderer';
 import React, { memo } from 'react';
 import CodeBlock from '../components/code-block';
+
+const Img = styled('img')({ maxWidth: '100%' });
 
 const components = {
   p: (() => {
@@ -97,7 +99,7 @@ const components = {
       return props.children.includes('\n') ? (
         <CodeBlock
           {...props}
-          style={{ padding: 16, overflowX: 'auto', borderRadius: 5 }}
+          sx={{ padding: 2, overflowX: 'auto', borderRadius: 1 }}
           theme={theme.palette.mode === 'light' ? themes.github : themes.dracula}
         />
       ) : (
@@ -126,8 +128,8 @@ const components = {
     return memo(ALink);
   })(),
   img: (() => {
-    const Img = props => <img {...props} alt={props.alt || ""} title={props.alt || ""} style={{ maxWidth: '100%' }} />;
-    return memo(Img);
+    const Image = props => <Img {...props} alt={props.alt || ""} title={props.alt || ""} />;
+    return memo(Image);
   })(),
 };
 

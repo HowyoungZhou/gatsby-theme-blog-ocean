@@ -1,4 +1,5 @@
-import {Highlight, Language, PrismTheme } from 'prism-react-renderer';
+import { styled } from '@mui/material';
+import { Highlight, Language, PrismTheme } from 'prism-react-renderer';
 import React from 'react';
 
 export interface CodeBlockProps {
@@ -8,7 +9,7 @@ export interface CodeBlockProps {
   theme?: PrismTheme;
 }
 
-export default function CodeBlock({ children, className, theme, style: outerStyle }: CodeBlockProps) {
+export default function CodeBlock({ children, className, theme, sx }: CodeBlockProps) {
   const lang = className?.match(/language-(?<lang>.*)/)?.groups?.lang || '';
 
   return (
@@ -17,17 +18,23 @@ export default function CodeBlock({ children, className, theme, style: outerStyl
       language={lang as Language}
       theme={theme}
     >
-      {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <code className={className} style={{ display: 'block', ...style, ...outerStyle }}>
-          {tokens.map((line, i) => (
-            <div key={i} {...getLineProps({ line, key: i })}>
-              {line.map((token, key) => (
-                <span key={key} {...getTokenProps({ token, key })} />
-              ))}
-            </div>
-          ))}
-        </code>
-      )}
+      {({ className, style, tokens, getLineProps, getTokenProps }) => {
+        const Code = React.useMemo(() => styled('code')({
+          display: 'block',
+          ...style,
+        }), [style]);
+        return (
+          <Code className={className} sx={sx}>
+            {tokens.map((line, i) => (
+              <div key={i} {...getLineProps({ line, key: i })}>
+                {line.map((token, key) => (
+                  <span key={key} {...getTokenProps({ token, key })} />
+                ))}
+              </div>
+            ))}
+          </Code>
+        )
+      }}
     </Highlight>
   )
 }
